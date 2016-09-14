@@ -1,0 +1,105 @@
+---
+layout: post
+title: Zend_Form zweispaltig mit CSS formatieren
+tags: [CSS, Forms, Zend Framework, Zend_Form]
+lang: de
+---
+<p>In der Standardeinstellung verpackt Zend_Form Eingabefelder und ihre Beschriftungen in einer HTML-Definitionsliste. Ob das nun semantisch ist oder nicht, darüber kann man sich so trefflich streiten wie darüber, was der bessere Editor oder das bessere Betriebssystem ist. Viel interessanter ist die Frage, wie man die <code>DT</code> und <code>DD</code> Elemente so mit CSS formatiert, dass dabei ein zweispaltiges Formular herauskommt.</p>
+
+<p>Der erste Versuch ist klassisch: das <code>dt</code> mit der Beschriftung bekommt eine Breite und ein <code>float</code> verpasst, das bekommt <code>dd</code> "zur Sicherheit" noch einen Rand, der der Breite des <code>dt</code> entspricht. </p>
+
+<pre><code class="css">
+
+dt {
+  float:left;
+  width:120px;
+}
+
+</code></pre>
+
+<p class="imgex"><img src="/assets/images/posts/form_small.png" alt="Formular mit kleinen Labels" /></p>
+
+<p>Die meisten Tutorials im Netz hören an dieser Stelle auf, übersehen aber ein Problem - Beschriftungen, die über mehrere Zeilen gehen. Dann sieht das Formular plötzlich so aus:</p>
+
+<p class="imgex"><img src="/assets/images/posts/form_big_wrong.png" alt="Formular mit verschobenen breiten Labels" /></p>
+
+<p>Heute habe ich mich so lange durch Suchergebnisse geklickt, bis ich die <a href="http://aspnetresources.com/blog/styling_definition_lists">Lösung</a> gefunden hatte. Das <code>dd</code> Element wird ebenfalls ge<code>float</code>et, wird mit einer Breite versehen und das <code>dt</code> bekommt die Eigenschaft <code>clear:left</code>, damit jede Beschriftung in einer neuen Zeile anfängt.</p>
+
+<pre><code class="css">
+dt {
+  float:left;
+  clear:left
+  width:120px;
+}
+
+dd {
+  float:left;
+  width:200px;
+}
+</code></pre>
+
+
+<p>So sieht das Formular in Firefox und Safari mit diesen Eigenschaften aus:</p>
+
+<p class="imgex"><img src="/assets/images/posts/form_big_right.png" alt="Formular mit positionierten breiten Labels" /></p>
+
+<p>Internet Explorer 6 mag anscheinend das <code>clear:left</code> nicht, aber auch dem Monster aus Redmond kann geholfen werden: Wenn die Breite des  umgebende <code>dl</code> Elements genau der Gesamtbreite von <code>dt</code> und <code>dd</code> entspricht wird, dann bricht auch der antike Browser korrekt um. Internet Explorer 7 leider nicht, der braucht noch folgenden bedingten Kommentar:</p>
+
+<pre><code class="html">
+<!--[if IE 7]>
+<style type="text/css">
+dd { float:none; }
+</style>
+ <![endif]-->
+</code></pre>
+
+<p>Der fertige Stil sieht so aus:</p>
+
+<pre><code class="css">
+dt {
+  float:left;
+  clear:left
+  width:120px;
+  margin:0.25em 0;
+}
+
+dd {
+  width:200px;
+  float:left;
+  margin:0.25em 0;
+}
+
+dl {
+  width:320px;
+  overflow:hidden;
+}</code></pre>
+
+
+<p>Wenn diese Formatierung in meiner Anwendung häufig auftaucht, jedoch mit unterschiedlichen Spaltenbreiten, dann habe ich ziemlich viel Tipparbeit vor mir. Die kann ich mir erleichtern, indem ich die das Ruby-Tool <a href="http://sass-lang.com/">SASS</a> oder seine <a href="http://code.google.com/p/phamlp/">PHP-Portierung</a> verwende. Diese Art CSS zu schreiben ermöglicht es, sich Makros zu definieren, die dann von SASS zu CSS kompiliert werden. Diese Makros heißen <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins">Mixins</a> und können sogar mit Parametern versehen werden und die Summe meiner Spaltenbreiten berechnen. Das hier ist mein neues Mixin für Formulare in Definitionslisten:</p>
+
+<pre><code class="css">
+@mixin form_dl_floated($labelwidth: 120px, $fieldwidth: 200px) {
+  dt {
+    float:left;
+    clear:left
+    width:$labelwidth;
+    margin:0.25em 0;
+  }
+
+  dd {
+    width:$fieldwidth;
+    float:left;
+    margin:0.25em 0;
+  }
+
+  dl {
+    width:$labelwidth + $fieldwidth;
+    overflow:hidden;
+  }
+}
+
+/* Anwendungsbeispiel mit eigener Breite fuer Beschriftung */
+
+#mein_formular {
+  @include form_dl_floated(150px);
+}</code></pre>

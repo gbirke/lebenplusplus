@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+{% block image_feature %}
+  {% include 'image_feature.html' %}
+{% endblock %}
+
+{% block content %}
+<article class="post">
+  <div class="headline-wrap">
+    {% if page.link %}
+      <h1><a href="{{ site.url }}/{{ page.url }}">{{ page.title }}</a></h1>
+    {% else %}
+      <h1><a href="{{ site.url }}{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
+    {% endif %}
+  </div><!--/ .headline-wrap -->
+  <div class="article-wrap">
+    {{ page.content }}
+    <footer role="contentinfo">
+    </footer>
+  </div><!-- /.article-wrap -->
+</article>
+{% endblock %}

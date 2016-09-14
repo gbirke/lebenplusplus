@@ -1,0 +1,94 @@
+---
+layout: post
+title: Visually debugging XSL-FO stylesheets
+tags: [debugging, xml, xsl-fo, xslt]
+---
+
+<p>When developing XSL-FO stylesheets sooner or later you will see something that doesn't look as intended: It has the wrong margin, padding, line height, floats in the wrong place, etc. If you have no visual debugging tool, the quickest way to check for errors is setting a border or background attribute on the element in question. </p>
+
+<p>&lt;curmudgeon&gt;<q>Just like we debugged web layouts in 1999! We had nothing like that fancy Firebug plugin, just our trusty notepad and bare HTML! And we liked it!</q>&lt;/curmudgeon&gt;</p>
+<p>I had several gripes with this ad-hoc approach:</p>
+<ul>
+  <li>I have to remember to take out the debugging attributes</li>
+  <li>I have to search all over my stylesheet when elements reside in different templates</li>
+  <li>Removing attributes can be a bit error-prone: You have to select excactly the right characters with the mouse or press several keys. You run the risk of leaving whitespace behind or deleting parts of other attributes</li>
+  <li>Sometimes borders and backgrounds are deliberate. How do you tell debugging attributes and "real" attributes apart?</li>
+</ul>
+<p>My solution: <em>Insert a special debugging attribute (from a separate namespace) into the elements you want to debug and <strong>postprocess</strong> your XSL-FO output with a stylesheet that replaces the debugging attribute with the desired debug formatting!</em> When your debug work is finished, you can leave the debugging attributes where they are and turn off the postprocessing.</p>
+<p>Using a separate stylesheet will ensure that you can group the debugging requirements neatly in one stylesheet. To make this even easier, the debugging attributes are placed in a separate stylesheet, <code>debugattributes.xsl</code>. The code for postprocessing is in the  <code>debugging.xsl</code> stylesheet and doesn't need to be changed.
+</p>
+
+<h2>How to use the xsldebug stylesheet</h2>
+<h3>Step 1: Enable debugging in the stylesheet</h3>
+<p>Suppose you want to debug the following template:</p>
+
+<pre><code class="xslt">&lt;xsl:template match=&quot;p&quot;&gt;
+    &lt;fo:block-container&gt;
+        &lt;fo:block font-size=&quot;100%&quot; space-after=&quot;1em&quot; text-align=&quot;justify&quot;&gt;
+            &lt;xsl:apply-templates/&gt;
+        &lt;/fo:block&gt;
+    &lt;/fo:block-container&gt;
+&lt;/xsl:template&gt;</code></pre>
+
+<p>Just add the debugging namespace <code>http://lebenplusplus.de/xsldebug</code> to your stylesheet header:</p>
+
+<pre><code class="xslt">&lt;xsl:stylesheet
+  xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;
+   xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;
+   xmlns:h=&quot;http://www.w3.org/TR/REC-html40&quot;
+   xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;
+   xmlns:dbg=&quot;http://www.lebenplusplus.de/xsldebugging/v1&quot;
+   exclude-result-prefixes=&quot;xs dbg&quot;
+   &gt;</code></pre>
+
+<p>Now add the attribute <code>dbg:class</code> to each element you want to modify. You can freely choose the name of the debug class. <br />Tip 1: Choose a debug class that fits the <code>match</code> or <code>name</code> attribute of your template. <br />Tip 2: Liberally sprinkle your stylehseet with debugging attributes, you'll never know when you need them!</p>
+
+<pre><code class="xslt">&lt;xsl:template match=&quot;p&quot;&gt;
+    &lt;fo:block-container dbg:class=&quot;p&quot;&gt;
+        &lt;fo:block font-size=&quot;100%&quot; dbg:class=&quot;p&quot; space-after=&quot;1em&quot; text-align=&quot;justify&quot;&gt;
+            &lt;xsl:apply-templates/&gt;
+        &lt;/fo:block&gt;
+    &lt;/fo:block-container&gt;
+&lt;/xsl:template&gt;
+</code></pre>
+
+<h3>Step 2: Define styles for the debugging attributes</h3>
+<p>Open the file <code>debugattributes.xsl</code> and put <code>fo:</code> elements in the <code>debugattributes</code> variable definition.</p>
+
+<pre><code class="xslt">&lt;xsl:variable name=&quot;debugattributes&quot;&gt;
+    &lt;fo:block border=&quot;solid 1pt #33aa22&quot; dbg:class=&quot;comment&quot; /&gt;
+    &lt;fo:block-container border=&quot;solid 1pt #aa3322&quot; dbg:class=&quot;comment&quot; /&gt;
+&lt;/xsl:variable&gt;
+</code></pre>
+
+<p>You don't need to define an element you don't want to debug - the debugging stylesheet will remove all debug attributes from the elements.</p>
+<p>You can put non-empty elements inside <code>$debugattributes</code>, but the stylesheet will only copy the attributes, all other content is ignored.</p>
+<h3>Step 3: Integrate debugging into your workflow</h3>
+<p>If you are using the <a href="http://saxon.sourceforge.net/">Saxon</a> XSLT processor, you can integrate debugging in two easy steps:</p>
+<ol>
+  <li>Add the saxon namespace to your namespace declarations:
+  <pre><code class="xslt">&lt;xsl:stylesheet
+  xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;
+   xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;
+   xmlns:h=&quot;http://www.w3.org/TR/REC-html40&quot;
+   xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;
+   xmlns:dbg=&quot;http://www.lebenplusplus.de/xsldebugging/v1&quot;
+   xmlns:saxon=&quot;http://saxon.sf.net/&quot;
+   exclude-result-prefixes=&quot;xs&quot;
+   &gt;</code></pre></li>
+   <li>Add a postprocessing attribute to your <code>&lt;xsl:output&gt;</code> tag:
+   <pre><code class="xslt">
+    &lt;xsl:output method=&quot;xml&quot; indent=&quot;no&quot; saxon:next-in-chain=&quot;debugging.xsl&quot;/&gt;</code></pre></li>
+</ol>
+<p>If you use Ant or a Makefile for your workflow, add an additional task that processes the output of your regular XSLT transformation with the <code>debugattributes.xsl</code> stylesheet.</p>
+<p>If you are already using a  <a href="http://xproc.org/" titel="XML Pipeline Language">XProc</a> tool I don't need to tell you how to integrate the postprocessing :-)</p>
+<p>When you are done debugging, but not done developing your stylesheet, you can simply leave <code>$debugattributes</code> empty until the need for debugging arises again. </p>
+<h2>What next?</h2>
+<p>I have created the stylesheet to scratch a personal itch. If it's useful for you or if you want to improve it, <a href="http://github.com/gbirke/xslfodebugging">fork xslfodebugging on GitHub!</a>.</p>
+<p>Some ideas of what could be useful in the future:</p>
+<ul>
+  <li>Debug id attributes</li>
+  <li>Insert debugging elements</li>
+  <li>Output debug messages with <code>&lt;xsl:message&gt;</code></li>
+  <li>Turn the stylesheet into a general-purpose postprocessing-for-debugging tool for other dialects than XSL-FO? </li>
+</ul>

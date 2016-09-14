@@ -1,0 +1,47 @@
+---
+layout: default
+image:
+  feature: "assets/images/enzolutions_image_header.png"
+  creditlink: "http://cr.linkedin.com/pub/werner-gomez/31/ba8/9b6"
+  credit: "Yersika Ferreira"
+---
+
+{% block content %}
+{# page.my_name #}
+{# dump(page.image) #}
+<article class="post">
+  <div class="headline-wrap">
+    {% if page.link %}
+      <h1><a href="{{ site.url }}/{{ page.url }}">{{ page.title }}</a></h1>
+    {% else %}
+      <h1><a href="{{ site.url }}{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
+    {% endif %}
+  </div><!--/ .headline-wrap -->
+  <div class="article-wrap">
+    {{ page.content }}
+    <footer role="contentinfo">
+      {% if page.categories | length > 0 or page.tags | length > 0 %}
+        <ul class="list-unstyled">
+            {% if page.tags | length > 0 %}
+                <li>
+                    <i class="fa fa-tags"></i>
+                    {% for tag, url in page.terms_url.tags %}
+                    <a href="{{ site.url }}{{ url }}">{{ tag }}</a>{% if loop.last == false %},{% endif %}
+                    {% endfor %}
+                </li>
+            {% endif %}
+            {% if page.categories | length > 0 %}
+                <li>
+                    <i class="fa fa-folder"></i>
+                    {% for category, url in page.terms_url.categories %}
+                    <a href="{{ site.url }}{{ url }}">{{ category }}</a>{% if loop.last == false %},{% endif %}
+                    {% endfor %}
+                </li>
+            {% endif %}
+        </ul>
+      {% endif %}
+    </footer>
+  </div><!-- /.article-wrap -->
+  {% include 'disqus_comments.html' %}
+</article>
+{% endblock %}
