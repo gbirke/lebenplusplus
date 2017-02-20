@@ -13,9 +13,10 @@ Stage 1: Prettify log files
 aeson_pretty, jsonpp
 
 Stage 2: query log files
-Introcudce `jq` with progressively more complex examples (with examplelog in gist): Query for specific dates, query for errors, query for specific context details, format output as lines, use other unix tools (sort, uniq, count)
+Introduce `jq` with progressively more complex examples (with examplelog in gist): Query for specific dates, query for errors, query for specific context details, format output as lines, use other unix tools (sort, uniq, count)
 
 Stage 3: Log processing systems
-graylog (trying out is easy with OVA), logstash et al
+graylog (trying out is easy with OVA), logstash et al.
+Link to example logstash config: https://gist.github.com/gbirke/7b011ce2d089d4508227017c8554d230
 
 Mention [Bunyan](http://blog.nodejs.org/2012/03/28/service-logging-in-json-with-bunyan/)
