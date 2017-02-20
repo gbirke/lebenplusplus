@@ -1,3 +1,5 @@
 build/
 vendor/
 src/plugins/
+_plugins
+composer.lock
