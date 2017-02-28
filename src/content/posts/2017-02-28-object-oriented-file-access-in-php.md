@@ -1,11 +1,10 @@
 ---
 layout: post
 title: Object Oriented File Access in PHP
-draft: true
 tags: [PHP,filesystem,io,patterns,testing]
 ---
 
-Test-driven driven development in PHP can become a pain when you're dealing with the file system. The builtin functions like `stat`, `getfilemtime`, `fopen` and `fgets` assume the existence of actual files. Until now, I always assumed you'd have to add something like [FileFetcher](https://github.com/JeroenDeDauw/FileFetcher), [Flysystem](http://flysystem.thephpleague.com/), [Gaufrette](https://github.com/knplabs/Gaufrette) or [vfsSystem](http://vfs.bovigo.org) to your dependencies. While those libraries are nice, they are additional dependencies and some add additional capabilities like caching or providing a unified interface to cloud storage. What if you really want to test your file processing classes without having real files? Enter [`SplFileObject`](http://php.net/manual/en/class.splfileobject.php) and its parent [`SplFileInfo`](http://php.net/manual/en/class.splfileinfo.php).
+Test-driven driven development in PHP can become a pain when you're dealing with the file system. The builtin functions like `stat`, `getfilemtime`, `fopen` and `fgets` assume the existence of actual files. Until now, I assumed you'd have to add a library like [FileFetcher](https://github.com/JeroenDeDauw/FileFetcher), [Flysystem](http://flysystem.thephpleague.com/), [Gaufrette](https://github.com/knplabs/Gaufrette) or [vfsSystem](http://vfs.bovigo.org) to your dependencies. While those libraries are nice, they are additional dependencies and some add additional capabilities like caching or providing a unified interface to cloud storage. What if you really want to test your file processing classes without having real files? Enter [`SplFileObject`](http://php.net/manual/en/class.splfileobject.php) and its parent [`SplFileInfo`](http://php.net/manual/en/class.splfileinfo.php).
 
 `SplFileObject` and `SplFileInfo` provide an object-oriented interface to the file system, providing a wrapper for many of the [low-level file system calls](http://php.net/manual/en/ref.filesystem.php). The wrapper can be overwritten and replaced with a test double in your unit tests.
 
@@ -20,11 +19,11 @@ function checkFileAge( string $name ) {
 }
 ```
 
-For testing this function, you'd have to create a two files with different time stamps. If you're using `SplFileInfo`  instead, you can pass a test double while testing:
+For testing this function, you'd have to create a two files with different time stamps. If you're using `SplFileInfo`  instead, you'll be able to pass a test double:
 
 ```php
 function checkFileAge( SplFileInfo $file ) {
-    if( time() - $name->getMTime() > 3600 ) {
+    if( time() - $file->getMTime() > 3600 ) {
        throw new FilecheckException( 'File is too old!' );
     }
 }
@@ -88,7 +87,7 @@ foreach( $file as $row ) {
  }
 ```
 
-Having an iterator in place has the additional benefit of being able to control your data flow. Imagine combining several CSV files with [`AppendIterator`](http://php.net/manual/en/class.appenditerator.php), using only valid rows with a  [`FilterIterator`](http://php.net/manual/en/class.filteriterator.php) and limiting the amount of rows with a [`LimitIterator`](http://php.net/manual/en/class.limititerator.php)!
+Using an iterator has the additional benefit of being able to manipulate your data further by wrapping the iterator in other iterator classes. Imagine combining several CSV files with [`AppendIterator`](http://php.net/manual/en/class.appenditerator.php), using only valid rows with a  [`FilterIterator`](http://php.net/manual/en/class.filteriterator.php) and limiting the amount of rows with a [`LimitIterator`](http://php.net/manual/en/class.limititerator.php)!
 
 ## Conclusion
 Using `SplFileObject` and  `SplFileInfo` makes your code more testable and adds all the possibilities of iterators, all without adding any new libraries. Try it in your next project!
