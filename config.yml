@@ -8,9 +8,6 @@ description: "Personal blog of Gabriel Birke"
 #    credit: WeGraphics
 
 
-# Your site's domain. E.g: http://yoursite.com
-url: http://lebenplusplus.de
-
 # Comments in posts
 comments:
     enabled: false
