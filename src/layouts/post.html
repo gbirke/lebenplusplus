@@ -26,7 +26,7 @@ image:
                 <li>
                     <i class="fa fa-tags"></i>
                     {% for tag, url in page.terms_url.tags %}
-                    <a href="{{ site.url }}{{ url }}">{{ tag }}</a>{% if loop.last == false %},{% endif %}
+                    <a href="{{ site.url }}{{ url }}" rel="tag">{{ tag }}</a>{% if loop.last == false %},{% endif %}
                     {% endfor %}
                 </li>
             {% endif %}
