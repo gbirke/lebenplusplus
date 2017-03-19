@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -v $(pwd):/var/www -t --rm gbirke/spress:2.2 site:build $*

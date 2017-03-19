@@ -17,6 +17,11 @@
     "config": {
         "vendor-dir": "_plugins/vendors"
     },
+    "scripts": {
+        "build": "scripts/build_site",
+        "serve": "scripts/serve_site",
+        "stop-server": "docker stop -t 0 lebenplusplus"
+    },
     "extra": {
         "spress_name": "tinto",
         "branch-alias": {

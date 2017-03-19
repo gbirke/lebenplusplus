@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -d -v $(pwd):/var/www -t --name lebenplusplus -p 4000:4000 --rm gbirke/spress:2.2 site:build --server --watch --drafts
