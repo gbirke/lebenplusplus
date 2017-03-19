@@ -25,6 +25,7 @@ All the command are also reachable via composer commands:
 ## Local Development without Docker
 
 Download Spress and make it executable:
+
     curl -LOS https://github.com/spress/Spress/releases/download/v2.1.3/spress.phar
     chmod a+x spress.phar
 
