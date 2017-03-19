@@ -65,3 +65,7 @@ paginate: 10
 
 exclude: ['README.md', 'LICENSE','composer.json']
 debug: false
+
+secret_taxonomies:
+    tags: ['wikimedia']
+    remove_tags: false

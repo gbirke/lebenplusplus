@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to protect your privacy by changing your Git commit times
-tags: [git,privacy,shell]
+tags: [git,privacy,shell,wikimedia]
 ---
 
 Your Git commit logs provide a good approximation of your habits and time zone: When you sleep, if you are working full time, which projects are private and and which are work-related (weekend vs workday commits), when you go to lunch, etc.

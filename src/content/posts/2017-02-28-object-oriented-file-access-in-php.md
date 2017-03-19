@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Object Oriented File Access in PHP
-tags: [PHP,filesystem,io,patterns,testing]
+tags: [PHP,filesystem,io,patterns,testing,wikimedia]
 ---
 
 Test-driven driven development in PHP can become a pain when you're dealing with the file system. The builtin functions like `stat`, `getfilemtime`, `fopen` and `fgets` assume the existence of actual files. Until now, I assumed you'd have to add a library like [FileFetcher](https://github.com/JeroenDeDauw/FileFetcher), [Flysystem](http://flysystem.thephpleague.com/), [Gaufrette](https://github.com/knplabs/Gaufrette) or [vfsSystem](http://vfs.bovigo.org) to your dependencies. While those libraries are nice, they are additional dependencies and some add additional capabilities like caching or providing a unified interface to cloud storage. What if you really want to test your file processing classes without having real files? Enter [`SplFileObject`](http://php.net/manual/en/class.splfileobject.php) and its parent [`SplFileInfo`](http://php.net/manual/en/class.splfileinfo.php).

@@ -1,0 +1,16 @@
+{
+    "name": "gbirke/secret_taxonomies",
+    "type": "spress-plugin",
+    "description": "Hide configured tags and categories",
+    "keywords": ["spress", "plugin"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel Birke",
+            "email": "gb@birke-software.de"
+        }
+    ],
+    "require": {
+        "spress/spress-installer": "2.0.*"
+    }
+}
