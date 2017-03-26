@@ -5,7 +5,7 @@ tags: [docker,spress,meta,tutorial]
 ---
 My last PHP update broke [Spress](http://spress.yosymfony.com/), the static site generator I use for this blog. I decided to move my blog generation to a more stable and portable environment - a Docker container. I've documented what I did and what I learned with this blog post. This is my first attempt to do something with Docker, please excuse any bad practices.
 
-You can find the finished Dockerfile at https://github.com/gbirke/spress-docker.
+You can find the finished Dockerfile at [https://github.com/gbirke/spress-docker].
 
 ## Writing the Dockerfile {#dockerfile-writing}
 
@@ -13,10 +13,10 @@ You can find the finished Dockerfile at https://github.com/gbirke/spress-docker.
 
 As the base image I'm using the [alpine variant of the official PHP Docker image][https://hub.docker.com/_/php/] to keep the storage space for the image as small as possible.
 
-RUN curl -L -o /usr/local/bin/spress https://github.com/spress/Spress/releases/download/v2.1.3/spress.phar && \
+	RUN curl -L -o /usr/local/bin/spress https://github.com/spress/Spress/releases/download/v2.1.3/spress.phar && \
 	chmod +x /usr/local/bin/spress
 
-Installation of Spress is fairly simple: After downloading the Spress PHAR file, I move it to a specified location and make it executable. The commands are chained with `&&` instead of being individual `RUN` commands, because Docker internally creates a new image for every `RUN` command and I don't want to clutter my hard disk with too many intermediary images.
+Installation of Spress is fairly simple: Download the Spress PHAR file and make it executable. The commands are chained with `&&` instead of being individual `RUN` commands, because Docker internally creates a new image for every `RUN` command and I don't want to clutter my hard disk with too many intermediary images.
 
 	WORKDIR /var/www
 	ENTRYPOINT [ "/usr/local/bin/spress" ]
@@ -30,23 +30,23 @@ Installation of Spress is fairly simple: After downloading the Spress PHAR file,
 
 The Dockerfile is complete. Now a Docker image needs to be built with the command
 
-	docker build -t gbirke/spress:latest .
+	docker build -t gbirke/spress .
 
-The option `-t gbirke/spress:latest` tags it for later submission to DockerHub. This will allow me to skip the build step when using it on other machines.
+The option `-t gbirke/spress` tags it for later submission to DockerHub. This will allow me to skip the build step when using it on other machines.
 
 ## Runnning Spress  {#running-the-image}
 
 The `docker run` command takes a [Docker *image*](https://docs.docker.com/engine/reference/glossary/#image) and runs it in a [Docker *container*](https://docs.docker.com/engine/reference/glossary/#container).
 The full command is
 
-	docker run -v .:/var/www -p 4000 --name serve_my_blog -t gbirke/spress
+	docker run -v $(pwd):/var/www -p 4000 --name serve_my_blog -t gbirke/spress
 
 Let's have a look at all the parameters
 
-- `-v .:/var/www` mounts the current directory as a volume inside the running container. If the Dockerfile were outside the current directory, I'd have to specify an absolute path.
+- `-v $(pwd):/var/www` mounts the current directory as a volume inside the running container.
 - `-p 4000` exposes port 4000 of the container to my host computer so I can reach the blog at http://localhost:4000/ from my browser.
 - `--name serve_my_blog` applies the name `serve_my_blog` to the image. If this parameter is missing, Docker will [generate](https://github.com/docker/docker/blob/master/pkg/namesgenerator/names-generator.go) an arbitrary name like `optimistic_payne` or `modest_agnesi`.
-- `-t` assigns the running process a "[pseudo-tty](https://en.wikipedia.org/wiki/Pseudoterminal)". If I leave this parameter out, I wouldn't be able to detach myself from the docker image with Control-C. Using a pseudo-tty also means that Spress can use its colored output.
+- `-t` assigns the running process a "[pseudo-tty](https://en.wikipedia.org/wiki/Pseudoterminal)". If I left this parameter out, I wouldn't be able to detach myself from the docker image with Control-C. Using a pseudo-tty also means that Spress can use its colored output.
 
 While the image is running, I can go to `localhost:4000/` and browse my blog.
 
