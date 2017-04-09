@@ -1,7 +1,7 @@
 ---
 layout: post
 title:
-tags: [finances,reviews,budgeting]
+tags: [] # finances,reviews,budgeting
 draft: true
 description: A review of various budgeting software apps, in search of an alternative to "You need a budget (YNAB)"
 ---

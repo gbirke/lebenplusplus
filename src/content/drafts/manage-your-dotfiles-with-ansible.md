@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Manage your dotfiles with Ansible
-tags: [administration,ansible,shell,git]
+tags: [] # administration,ansible,shell,git
 ---
 In the course of my nerd career I collected a set of default configurations - Vim environment, Git configuration, favorite shell aliases -  that I miss dearly when working on a new production server or VM environment. I've looked for various ways to easily copy my configuration files to a new machine and to keep the files in sync across machines.
 

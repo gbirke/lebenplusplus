@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Technical Wishlist at Wikimedia Germany
-tags: [conference,presentation,technical writing]
+tags: [] # conference,presentation,technical writing
 draft: true
 ---
 This is a 5-minute lightning talk I gave at the "Write The Docs Europe" conference in Prague.

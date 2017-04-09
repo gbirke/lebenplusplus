@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to pass the sudo password from the Mac OS keychain to the Ansible command line
-tags: [ansible,security,mac_os]
+tags: [] # ansible,security,mac_os
 draft: true
 ---
 Tired of having to open your password manager whenever you run an Ansible playbook that needs a sudo (or rather `become` password)? This guide shows how to keep your passwords securely in the Mac OS keychain, without the need to copy and paste them.
