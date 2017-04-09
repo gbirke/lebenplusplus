@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Running Spress in Docker
-tags: [docker,spress,meta,tutorial]
+tags: [docker,spress,meta,tutorial,wikimedia]
 ---
 My last PHP update broke [Spress](http://spress.yosymfony.com/), the static site generator I use for this blog. I decided to move my blog generation to a more stable and portable environment - a Docker container. I've documented what I did and what I learned with this blog post. This is my first attempt to do something with Docker, please excuse any bad practices.
 
