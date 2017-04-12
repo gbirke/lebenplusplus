@@ -18,9 +18,9 @@ To stop the server, run the command
 
 All the command are also reachable via composer commands:
 
-    composer build
-    composer serve
-    composer stop-server
+    composer site:build
+    composer site:serve
+    composer site:stop-server
 
 ## Local Development without Docker
 
