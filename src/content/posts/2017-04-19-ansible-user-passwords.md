@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Creating users and their passwords with Ansible
-tags: [] #ansible,linux,security,wikimedia
+tags: [ansible,linux,security,wikimedia]
 ---
-This article will introduce you how create user accounts on remote servers with Ansible. You will learn how to create users with passwords, SSH-only users and users with temporary passwords that must be changed.
+This article will teach you how create user accounts with the configuration management software [Ansible](https://www.ansible.com). You will learn how to create users with passwords, SSH-only users and users with temporary passwords that must be changed.
 
 ## Some background on passwords on Linux
 The file `/etc/passwd` hints at passwords, but stores only an "x" or other character where the password has been stored [historically](https://en.wikipedia.org/wiki/Passwd#History).
-The real passwords are stored in the file `/etc/shadow`, in a hashed format. That file also contains information about the date when the password was last set and when it expires. If the password is a special character instead of a hash, that means the password is "locked", meaning that the user can't use it for logging in or running a `sudo` command that needs a password.
+The real passwords are stored in the file `/etc/shadow`, in a hashed format. `/etc/shadow` also contains information about the date when the password was last set and when it expires. If the password is a special character instead of a hash, that means the password is "locked", meaning that the user can't use it for logging in or running a `sudo` command that needs a password.
 
 ## Creating users with passwords
 
@@ -23,7 +23,7 @@ A basic task for creating a user with a password in Ansible looks like this
 
 The `password` field must contain a hashed password in a format for `/etc/shadow`, meaning it contains the hash algorithm and a [salt](https://en.wikipedia.org/wiki/Salt_%28cryptography%29). The [Ansible documentation](http://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module) suggests using the `mkpasswd` command or the Python `passlib` library for generating the password.
 
-If you're in a position where you need to generate lots of user accounts with default secure passwords, have a look at [ansible-create-users](https://github.com/gbirke/ansible-create-users), a Python script I wrote. It will create an Ansible variable file with encrypted passwords.
+If you need to generate lots of user accounts with default secure passwords, e.g. from a script or a CSV file, have a look at [ansible-create-users](https://github.com/gbirke/ansible-create-users), a Python script I wrote. It will create an Ansible variable file with password hashes.
 
 ## Creating a locked, SSH-only user
 
@@ -83,6 +83,6 @@ Most of the time, the `user` task will put the user account in the desired state
 ```
 
 ## Conclusion
-Which method of user creation you choose, is highly dependent on your security requirements and your use case. If you have many users across different machines maybe you should use LDAP for user management instead of creating them with Ansible.
+Think carefully about what kind of user you want to create on your servers. Users that are just for running internal services are best created as locked users, without SSH access. Deployment and maintenance users are best created as users with SSH access. When setting up a local machine, you'll probably set initial passwords.
 
-Think carefully about what kind of user you want to create on your servers.
+Whichever method of user creation you choose is highly dependent on your security requirements and your use case. Ansible is a valuable tool, but beware of the old saying: "If all you have is a hammer, everything looks like a nail." If you have many users across different machines maybe you should use LDAP for user management instead of creating them with Ansible.
