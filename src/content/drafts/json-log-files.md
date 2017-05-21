@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to view JSON log files
-tags: [administration,logging,JSON,shell]
+tags: [] #administration,logging,JSON,shell
 ---
 Everyone who had to use `grep` to look for specific error messages or other information from textual log files knows the problem - you have to build complex regular expressions that put structure into lines of text. You could get the idea of "why not lose the structure in the first place, just log all things as JSON".
 
