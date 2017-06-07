@@ -80,6 +80,9 @@ Con
 - No tabular view
 
 ## TODO: [Money Manager EX](http://www.moneymanagerex.org/)
+## TODO: [PocketSmith](https://www.pocketsmith.com/)
+
+Both are not budgeting software but more "personal finance" software with some budgeting options.
 
 # Conclusion
 Most Promising: Goodbudget. But no replacement for the ease and user-friendlyness of YNAB.
