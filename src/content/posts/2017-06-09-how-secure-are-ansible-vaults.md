@@ -2,6 +2,7 @@
 layout: post
 title: How Secure Are Ansible Vaults?
 tags: [ansible,security,cryptography,passwords,wikimedia]
+description: How password length protects against brute-force attacks and how to apply that knowledge to Ansible vaults.
 ---
 Encrypting credentials like SSH keys or database passwords and putting the encrypted file in a semi-public Git repository is both convenient and scary. Convenient because every user of the repository only has to know only one password. Scary because you now rely on encryption and passwords instead of other security practices. So the question arose in my team **"Assuming there are no implementation errors, how secure are Ansible Vaults?"** Since the first 10 Google results did not answer this question quick enough, I decided to read the [source code](https://github.com/ansible/ansible/blob/adea1f2b80d806d94ca1bdb2d06f2df077feb948/lib/ansible/parsing/vault/__init__.py) and answer the question myself. My TL;DR answer: **It depends on your password. A 32-character, randomly generated password should suffice for the foreseeable future.**
 
