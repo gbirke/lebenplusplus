@@ -1,0 +1,10 @@
+language: php
+
+php: 7.1
+
+cache: spress.phar
+install:
+    - curl -z spress.phar -LOS https://github.com/spress/Spress/releases/download/v2.2.0/spress.phar
+
+script:
+    - php spress.phar site:build --env=prod
