@@ -21,7 +21,7 @@
         "site:build": "scripts/build_site",
         "site:serve": "scripts/serve_site",
         "site:stop-server": "docker stop -t 0 lebenplusplus",
-        "site:sync": "rsync -v --recursive --times --delete --prune-empty-dirs build/ gbprivat@gienah.uberspace.de:lebenplusplus.de/",
+        "site:sync": "rsync -v --recursive --times --delete --prune-empty-dirs --checksum build/ gbprivat@gienah.uberspace.de:lebenplusplus.de/",
         "site:update": [ "@site:build", "@site:sync" ]
     },
     "extra": {

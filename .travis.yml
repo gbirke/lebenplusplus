@@ -24,6 +24,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -v --recursive --times --delete --prune-empty-dirs $TRAVIS_BUILD_DIR/build/ gbprivat@gienah.uberspace.de:lebenplusplus.de/
+  script: rsync -v --recursive --times --delete --prune-empty-dirs --checksum $TRAVIS_BUILD_DIR/build/ gbprivat@gienah.uberspace.de:lebenplusplus.de/
   on:
     branch: master
