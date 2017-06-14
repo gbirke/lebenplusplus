@@ -2375,6 +2375,20 @@ body {
     text-decoration: underline
 }
 
+.footer-wrap .credit {
+    display:inline-block;
+}
+
+.footer-wrap .credit::after {
+    content: "•";
+    display:inline-block;
+    padding:0 .25em;
+}
+
+.footer-wrap .credit:last-child::after {
+    content: "";
+}
+
 .footer-wrap footer {
     display: inline;
     float: left;
