@@ -2381,8 +2381,8 @@ body {
 
 .footer-wrap .credit::after {
     content: "•";
-    display:inline-block;
-    padding:0 .25em;
+    display: inline-block;
+    padding: 0 .15em 0 .5em;
 }
 
 .footer-wrap .credit:last-child::after {
