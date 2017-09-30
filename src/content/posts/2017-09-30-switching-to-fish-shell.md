@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Four weeks of fish shell - first impressions
+title: Four weeks of fish shell
 tags: [shell,software,review,mac-os,wikimedia]
 description: My experiences switching from zsh to fish shell
 ---
