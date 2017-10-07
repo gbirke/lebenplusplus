@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ideas and links from SoCraTes Day Berlin 2017
-tags: [] # conference,agile,craftsmanship,testing,communication,wikimedia
+tags: [conference,agile,craftsmanship,testing,communication,wikimedia]
 description: Ideas and links from the sessions I attended at SoCraTes Day 2017 in Berlin.
 ---
 <a href="/assets/images/posts/schedule_socrates_day_berlin_2017.jpg" class="image-link" style="float:left;padding-right:20px"><img src="/assets/images/posts/schedule_socrates_day_berlin_2017.jpg" width="300" height="300"></a>
