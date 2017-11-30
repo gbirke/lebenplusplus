@@ -4,7 +4,7 @@ title: Error log analysis with jq
 tags: [shell,software,troubleshooting,json,jq,wikimedia]
 description: A tutorial on how to build aggregate summaries from JSON log files with jq.
 ---
-This is a step-by-step introduction into aggregating and analyzing errors from a JSON error log (where each error is a JSON object on a single line) with the tool `jq`. While most tutorials and documentation of `jq` focus on how to transform JSON objects to other JSON objects on a 1:1 basis, this tutorial is more about building aggregates, using an  approach that takes a page out of functional programming.
+This is a step-by-step introduction into aggregating and analyzing errors from a JSON error log (where each error is a JSON object on a single line) with the tool [`jq`](https://stedolan.github.io/jq/). While most tutorials and documentation of `jq` focus on how to transform JSON objects to other JSON objects on a 1:1 basis, this tutorial is more about building aggregates, using an  approach that takes a page out of functional programming.
 
 The example error log looks like this:
 
