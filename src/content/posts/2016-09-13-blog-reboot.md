@@ -10,4 +10,4 @@ I've dropped three heavily outdated posts in the process. The URLs of the old bl
 
 The design is a stand-in until I have the time to do something better. Judging by the post frequency that'll be in 2036 ;-)
 
-Will I write more? Probably not. Will I enjoy writing more when I do it. You bet.
+Will I write more? Probably not. Will I enjoy writing more when I do it? You bet.
