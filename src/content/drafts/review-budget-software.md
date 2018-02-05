@@ -1,11 +1,18 @@
 ---
 layout: post
-title:
+title: I need a budget (software)!
 tags: [] # finances,reviews,budgeting
 draft: true
-description: A review of various budgeting software apps, in search of an alternative to "You need a budget (YNAB)"
+description: Part I - A praise of YNAB and why I won't use its new version. Part II - A review of various budgeting software apps, in search of an alternative to "You need a budget (YNAB)"
 ---
-TODO: Introduction why I want switch away from YNAB. See also https://plus.google.com/114920412757292417494/posts/JZS8ZtEkxMU
+Since I was introduced to the software and method of "You Need A Budget (YNAB)" I was hooked. YNAB is so called "[envelope-based budgeting](https://en.wikipedia.org/wiki/Envelope_system)" which means that you assign all your money (wheter it's in cash or in a bank account) to virtual "envelopes". You divide each income in your envelopes as you see fit and whenever you buy something, you "take" the money from the envelope. The small time investment of this system gave me incredible peace of mind: I can save for expensive long-term goals (6 months until I can buy that huge TV), I'm not surprised by big yearly expenses (e.g. insurances), I have a "rainy day fund" for sudden expenses (medical bills, repairs, etc) and I can scale back on eating out.
+
+I did not know how well YNAB worked, until I looked for alternatives. The results of my research will be in the 2nd part of this article, first some information on why I want to stop using YNAB in the first place.
+
+In 2016 YNAB introduced a new version of their software, which was entirely web-based. While it was slick, it had a shortcoming that made upgrading unacceptable: The data is stored on YNABs servers. Sure, they say it's "encrypted", but to serve it to me in their web app, they have to have a key to decrypt it (at least in the way they programmed it). This makes them a super-attractive target for hackers and governments. There was a well-formulated post that expressed exactly how I felt: https://plus.google.com/114920412757292417494/posts/JZS8ZtEkxMU
+
+
+
 TODO: Mention [BudgetFirst](https://github.com/BudgetFirst/BudgetFirst)
 
 Not much credit card and check use.
