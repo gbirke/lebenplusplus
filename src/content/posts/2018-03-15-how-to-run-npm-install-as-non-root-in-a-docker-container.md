@@ -19,20 +19,20 @@ A short little command line, that mounts the current directory into the containe
 
     docker run -it --rm -u node -v $(pwd):/app -w /app npm install
 
-This will install the packages, but you still might run into permission problems if the `node` user from the docker image (with UID and GID 1000) do not exactly match the UID of the user running the docker command or the owner of an existing `node_modules` directory.
+This will install the packages, but you still might run into permission problems if the `node` user from the docker image (with UID and GID 1000) do not exactly match the UID of the user running the docker command or if the `node_modules` directory already exists with different permissions.
 
 ## Third try: running as the current user
 
     docker run -it --rm -u $(id -u):$(id -g) -v $(pwd):/app -w /app npm install
 
-This will confuse `npm install`, causing it to fail, because it's very likely that there is no entry in `/etc/passwd` for the UID and GID you provided. It will then assume `/` as the home directory of that user, failing miserably because the user has no write permissions.
+This will cause `npm install` to fail. Judging from the error messages, the cause of failure is that npm tries to run subshells, but there is no entry in `/etc/passwd` for the UID and GID you provided. npm will then assume `/` as the home directory of that user, failing miserably because the user has no write permissions.
 
 ## Finally, permission nirvana
-The solution for the `npm` permission confusion is to fake the user entry and its home directory. First, we create a minimal `passwd` file for the current user on our host system:
+The solution for the `npm` permission confusion is to fake the user entry and its home directory. First, you create a minimal `passwd` file for the current user on our host system:
 
     echo "node:x:$(id -u):$(id -g)::/home/node:/bin/bash" > /tmp/fake-passwd
 
-The we mount the passwd file and a writeable directory of the current user:
+Then you mount the passwd file and a writeable directory of the current user:
 
     docker run -it --rm -u $(id -u):$(id -g) -v /tmp/fake-passwd:/etc/passwd \
         -v ~/tmp:/home/node -v $(pwd):/app -w /app npm install
