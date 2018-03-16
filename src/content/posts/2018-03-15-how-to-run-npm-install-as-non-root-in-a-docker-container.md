@@ -28,7 +28,7 @@ This will install the packages, but you still might run into permission problems
 This will cause `npm install` to fail. Judging from the error messages, the cause of failure is that npm tries to run subshells, but there is no entry in `/etc/passwd` for the UID and GID you provided. npm will then assume `/` as the home directory of that user, failing miserably because the user has no write permissions.
 
 ## Finally, permission nirvana
-The solution for the `npm` permission confusion is to fake the user entry and its home directory. First, you create a minimal `passwd` file for the current user on our host system:
+A solution for the npm permission problem is to fake the `passwd` user entry and its home directory. First, you create a minimal `passwd` file for the current user on our host system:
 
     echo "node:x:$(id -u):$(id -g)::/home/node:/bin/bash" > /tmp/fake-passwd
 
