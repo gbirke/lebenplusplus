@@ -1,0 +1,23 @@
+{
+  "name": "migrate-frontmatter",
+  "version": "1.0.0",
+  "description": "Migrate Frontmatter from Spress to Hugo",
+  "main": "index.js",
+  "dependencies": {
+    "front-matter-editor": "https://github.com/gbirke/front-matter-editor/tarball/fs-info-for-change-functions",
+    "klaw": "^2.1.1",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "frontmatter",
+    "hugo",
+    "spress",
+    "migration"
+  ],
+  "author": "Gabriel Birke <gb@birke-software.de>",
+  "license": "MIT"
+}

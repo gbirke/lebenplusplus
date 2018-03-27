@@ -7,10 +7,11 @@ date: "2017-12-03"
 draft: true
 ---
 
-Add "date" property to posts - need to be inserted from file name
-
-Problematic "layout" property
-* Remove with `find src/content/ -type f -print0 | xargs -0 sed -i /^\s*layout:\s+\w+\s*$/d `
+Frontmatter conversion
+frontmatter-editor library
+* Add "date" property to posts - date, filename or file modification time. Needed frontmatter lib fork to use filename
+* remove "layout" property
+* Add "draft" flag based on path
 
 Rename "posts" directory to "post" to match special handling by theme
 
