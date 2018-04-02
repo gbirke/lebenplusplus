@@ -1,4 +1,5 @@
-.content p code {
+.content p code,
+.content li code {
     color: black;
 }
 
