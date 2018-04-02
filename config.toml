@@ -1,0 +1,54 @@
+DefaultContentLanguage = "en"
+baseURL = "http://lebenplusplus.de/"
+languageCode = "en-us"
+title = "Leben++"
+theme = "blackburn"
+Copyright = "&copy; 2018 by Gabriel Birke"
+pygmentsCodeFences = true
+ignorefiles = [ "drafts" ]
+
+[languages]
+[languages.en]
+weight = 1
+[languages.de]
+weight = 2
+
+[permalinks]
+post = "/:year/:month/:day/:title/"
+
+[params]
+author = "Gabriel Birke"
+subtitle = "It's never too late to get a life"
+dateFormat = "02 Jan 2006"
+highlightjs = "androidstudio"
+highlightjs_extra_languages = ["yaml"]
+custom_css = ["css/custom.css"]
+custom_js = ["https://cdnjs.cloudflare.com/ajax/libs/zooming/1.4.2/zooming.min.js"]
+
+[menu]
+  # Shown in the side menu.
+  [[menu.main]]
+    name = "Home"
+    pre = "<i class='fa fa-home fa-fw'></i>"
+    weight = 1
+    identifier = "home"
+    url = "/"
+  [[menu.main]]
+    name = "Posts"
+    pre = "<i class='fa fa-list fa-fw'></i>"
+    weight = 2
+    identifier = "post"
+    url = "/post/"
+  [[menu.main]]
+    name = "Tags"
+    pre = "<i class='fa fa-tags fa-fw'></i>"
+    weight = 3
+    identifier = "tags"
+    url = "/tags/"
+
+[social]
+twitter = "chiborg"
+github = "gbirke"
+stackoverflow = "chiborg"
+gnusocial = "https://pleasehug.me/web/accounts/21288"
+keybase = "chiborg"

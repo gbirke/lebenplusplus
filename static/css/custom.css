@@ -1,0 +1,32 @@
+.content p code {
+    color: black;
+}
+
+.content blockquote {
+    border-left: solid 4px #777;
+    margin-left: 0;
+    padding-left: 1rem;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.content blockquote em {
+    font-weight: bolder;
+}
+
+.multilingual-post-note {
+    margin-top: 3em;
+}
+
+.pure-menu-item.feed {
+    border-top: solid 1px #333;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+}
+
+#menu div.social {
+    flex-grow: 1;
+}

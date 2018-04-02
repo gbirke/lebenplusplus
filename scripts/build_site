@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -v $(pwd):/src -$(pwd)/public:/output -t --rm --name "hugo-build" jojomi/hugo $*
