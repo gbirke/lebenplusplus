@@ -38,8 +38,7 @@ function convertFile( filePath, destPath ) {
 }
 
 const src = path.join(__dirname, '../src/content/');
-// TODO Use Hugo content directory
-const dest = path.join(__dirname,'/output');
+const dest = path.join(__dirname,'../../hugo-gabriel/content');
 
 const onlyMarkdownFiles = through2.obj(function (item, enc, next) {
   if (path.extname(item.path) === '.md') this.push(item)
