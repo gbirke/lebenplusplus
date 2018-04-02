@@ -16,6 +16,7 @@ function convertFile( filePath, destPath ) {
             publish_date = fileSystemInfo.name.match( /^\d{4}-\d{2}-\d{2}/ )[0]
         } else {
             let d = fileSystemInfo.status.mtime;
+            // TODO use proper date formatter to avoid invalid dates with 1-digit days/months
             publish_date = [d.getFullYear(), d.getMonth()+1, d.getDate()].join('-');
         }
         matter.data = {
@@ -41,10 +42,11 @@ const src = path.join(__dirname, '../src/content/');
 const dest = path.join(__dirname,'../../hugo-gabriel/content');
 
 const onlyMarkdownFiles = through2.obj(function (item, enc, next) {
-  if (path.extname(item.path) === '.md') this.push(item)
-  next()
+  if (path.extname(item.path) === '.md') this.push(item);
+  next();
 })
 
+// Use "klaw" library to walk through the src directory, converting each encountered Markdown file
 klaw(src)
   .pipe(onlyMarkdownFiles)
   .on('data', (item) => {
@@ -61,14 +63,3 @@ klaw(src)
 
 
 
-/*
-convertFile(
-    path.join(__dirname, '../src/content/drafts/json-log-files.md'),
-    path.join(__dirname,'/output')
-);
-*/
-
-
-
-
-//let filePath = path.join(__dirname, '../src/content/posts/2016-09-14-swanseaconf-2016.md');
