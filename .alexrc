@@ -1,0 +1,6 @@
+{
+    "allow": [
+        "host-hostess",
+        "hostesses-hosts"
+    ]
+}
