@@ -54,4 +54,4 @@ services:
             - /path/to/your/library:code/vendor/your/library
 ```
 
-Make sure that when you run `composer` commands, you're not running them inside the container in which you mounted the library. Running them in a separate container that will change only the original `vendor` directory on your host machine.
+Make sure that when you run `composer` commands, you're not running them inside the container in which you mounted the library. Running them in a separate container will change only the original `vendor` directory on your host machine.
