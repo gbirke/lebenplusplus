@@ -3,7 +3,7 @@ title: Ideas and links from SoCraTes Day Berlin 2017
 tags:
   - conference
   - agile
-  - craftsmanship
+  - software craft
   - testing
   - communication
 date: '2017-10-07'
@@ -50,4 +50,3 @@ An open discussion about conflicts in the workplace. Some ideas and quotes:
 * [Usable Software Design](https://leanpub.com/usablesoftwaredesign/): How to use UX techniques to design your code for a special kind of user: other developers.
 * [Integrated Tests are a scam](http://blog.thecodewhisperer.com/permalink/integrated-tests-are-a-scam): A provocative article why integration tests must die.
 * [Legacy coderetreat](http://blog.adrianbolboaca.ro/2014/04/legacy-coderetreat/)
-
