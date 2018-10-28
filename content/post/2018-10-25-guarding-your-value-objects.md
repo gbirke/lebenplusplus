@@ -111,3 +111,5 @@ class Page() {
 
 ## Conclusion
 How you validate your value objects is a tradeoff between architectural concerns, performance, readability and convenience. This article should help you to make the right choice for your project.
+
+If you're not convinced that you should add validation to your value objects at all, see my followup article "[Common arguments against putting validation code in value objects]( {{% relref "2018-10-30-arguments-against-validation.md" %}})"
