@@ -2,12 +2,12 @@
 title: "Guarding Your Value Objects"
 date: "2018-10-25"
 tags:
+  - architecture
   - value objects
   - DDD
   - Domain Driven Design
   - patterns
   - validation
-  - opinion
 categories:
   - wikimedia
 description: The pros and cons of different ways to create always-valid value objects.
