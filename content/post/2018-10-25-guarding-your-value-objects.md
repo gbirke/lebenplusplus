@@ -12,7 +12,7 @@ categories:
   - wikimedia
 description: The pros and cons of different ways to create always-valid value objects.
 ---
-When you apply the principle of Domain Driven Design (DDD) to your code, you start to notice all the small "rules" of the domain. Rules like *"A name must not consist of whitespace, must have its whitespace trimmed on both ends and cannot be empty."* Or *"A donation amount must be greater than zero."* Or *"A book must have at least one page."* It's important that you can't create value objects that violate those rules. If you put the validation outside of the value objects, then all the code that use the value object must check if it's valid, leading to duplication all across the layers of your project. How do you prevent yourself and your follow programmers from creating invalid value objects? By putting validation logic in the constructor.
+When you apply the principle of Domain Driven Design (DDD) to your code, you start to notice all the small "rules" of the domain. Rules like *"A name must not consist of whitespace, must have its whitespace trimmed on both ends and cannot be empty."* Or *"A donation amount must be greater than zero."* Or *"A book must have at least one page."* It's important that you can't create [value objects](https://en.wikipedia.org/wiki/Value_object) that violate those rules. If you put the validation outside of the value objects, then all the code that use the value object must check if it's valid, leading to duplication all across the layers of your project. How do you prevent yourself and your follow programmers from creating invalid value objects? By putting validation logic in the constructor.
 
 In this article, I will show examples of how to implement validation logic in PHP classes and what the strength and weakness of each method is.
 
@@ -77,10 +77,10 @@ You can use assertion libraries like [webmozart/assert](https://github.com/webmo
 * `beberlei/assert` allows for applying all assertion rules returning a collection of violations.
 
 #### Drawbacks of using a custom assertion library:
-* You have created a dependency of your domain objects on a library. That dependency is not an architecture violation, because the assertions are pure functions. They are not stateful and don't interact with any external infrastructure, so it's up to you how much you want to preserve the purity of your domain.
+* You have created a dependency of your value objects on a library. That dependency is not an architecture violation, because the assertions are pure functions. They are not stateful and don't interact with any external infrastructure, so it's up to you how much you want to preserve the purity of your domain.
 * Performance impact. If you have a handful of assertions, you might not need to load thousands of lines of assertion code.
 
- Your code outside of the domain objects must not depend on the exceptions thrown by the Assertion library. Both libraries I mentioned extend their exception classes from PHPs own `IllegalArgumentException`, so even your tests don't need to depend on the exception classes of the library.
+ Your code outside of the value objects must not depend on the exceptions thrown by the Assertion library. Both libraries I mentioned extend their exception classes from PHPs own `IllegalArgumentException`, so even your tests don't need to depend on the exception classes of the library.
 
 ## Self-written guard clauses
 ```PHP
@@ -111,4 +111,4 @@ class Page() {
 * Developer dissatisfaction, as writing the assertions and their tests can feel like writing "boilerplate code".
 
 ## Conclusion
-How you validate your domain objects is a tradeoff between architectural concerns, performance, readability and convenience. This article should help you to make the right choice for your project.
+How you validate your value objects is a tradeoff between architectural concerns, performance, readability and convenience. This article should help you to make the right choice for your project.
