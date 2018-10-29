@@ -17,13 +17,12 @@ When you apply the principle of Domain Driven Design (DDD) to your code, you sta
 In this article, I will show examples of how to implement validation logic in PHP classes and what the strength and weakness of each method is.
 
 ## Types
-You can implement the "must have at least one element" constraint with the PHP spread operator:
-
+You can implement the "must have at least one element" constraint with mandatory arguments and the PHP spread operator:
 ```PHP
-class Book() {
+class Book {
   private $pages;
-  public function __construct(Page ...$pages) {
-    $this->pages = $pages;
+  public function __construct(Page $firstPage, Page ...$pages) {
+    $this->pages = array_merge( [$firstPage], $pages );
   }
 }
 ```
