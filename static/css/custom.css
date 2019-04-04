@@ -3,6 +3,18 @@
     color: black;
 }
 
+.content a code {
+    color: #3b8bba;
+}
+
+.content a:hover code {
+    text-decoration: underline;
+}
+
+.content a:visited code {
+    color: #265778;
+}
+
 .content blockquote {
     border-left: solid 4px #777;
     margin-left: 0;
