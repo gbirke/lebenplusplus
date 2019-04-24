@@ -12,7 +12,7 @@ before_install:
     - docker pull jojomi/hugo
 
 script:
-- docker run -v $(pwd):/src -v /tmp/hugo-build:/output -t --rm jojomi/hugo
+- docker run -v $(pwd):/src -v /tmp/hugo-build:/output -e HUGO_THEME=blackburn -t --rm jojomi/hugo
 
 # Thanks to https://oncletom.io/2016/travis-ssh-deploy/
 before_deploy:
