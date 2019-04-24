@@ -185,9 +185,9 @@
     </li>
     {{ end }}
 
-    {{ if .RSSLink }}
+    {{ with .OutputFormats.Get "rss" -}}
     <li class="pure-menu-item feed">
-      <a class="pure-menu-link" href="{{ .RSSLink }}"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      {{ printf `<a class="pure-menu-link" rel="%s" type="%s" href="%s"><i class="fa fa-rss fa-fw"></i>RSS</a>` .Rel .MediaType.Type .Permalink | safeHTML}}
     </li>
     {{ end }}
 
