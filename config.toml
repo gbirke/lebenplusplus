@@ -1,5 +1,5 @@
 DefaultContentLanguage = "en"
-baseURL = "http://lebenplusplus.de/"
+baseURL = "https://lebenplusplus.de/"
 languageCode = "en-us"
 title = "Leben++"
 theme = "blackburn"
