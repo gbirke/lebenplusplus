@@ -32,7 +32,7 @@ In this session I learned about the data model of Git: Individual commits form a
 * `reset --hard` removes the changes from the intermediate commits and resets the workspace.
 
 ## Covariance and Contravariance
-In a coding kata that worked entirely in the compiler, where the type checks took the place of unit test, I learned about covariance and contravariance: They are the constrains that govern how functions and higher-order-types (also known as "generics" in languages like Typescript and Java) behave when substituting a type with its sub-type or super-type. The kata itself was about applying the ["Producer Extends, Consumer super" (PECS) rules in Java](4). Since then, I've read about [covariance and contravariance in Typescript](5) and [covariance and contravariance coming to PHP in version 7.4](3).
+In a coding kata that worked entirely in the compiler, where the type checks took the place of unit test, I learned about covariance and contravariance: They are the constrains that govern how functions and higher-order-types (also known as "generics" in languages like Typescript and Java) behave when substituting a type with its sub-type or super-type. The kata itself was about applying the ["Producer Extends, Consumer super" (PECS) rules in Java][4]. Since then, I've read about [covariance and contravariance in Typescript][5] and [covariance and contravariance coming to PHP in version 7.4][3].
 
 ## Other ideas and resources
 * [Learn Git branching](https://learngitbranching.js.org/) is a simulation and visualization of the Git branch model. In a simulated repository, you can try out what happens if you run `git branch`, `git commit`, `git merge` and `git reset`.   
