@@ -11,7 +11,7 @@ categories:
   - wikimedia
 description: "A tutorial on how to implement a 'findNeighbors' function in different ways and the negative performance impact of functional programming patterns when using JavaScript"
 ---
-I participated in the [Global Day of Coderetreat](https://www.coderetreat.org/), practicing on the [Game of Life Kata](https://kata-log.rocks/game-of-life-kata) and heard that some people solved the problem of finding neighboring cells with a [Cartesian Product](https://en.wikipedia.org/wiki/Cartesian_product). I did not see their solution, but tried out to apply the idea to my own solution. While trying it out, I learned something about JavaScript, functional programming and performance.
+I participated in the [Global Day of Coderetreat](https://www.coderetreat.org/), practicing on the [Game of Life Kata](https://kata-log.rocks/game-of-life-kata) and heard that some people solved the problem of finding neighboring cells with a [Cartesian Product](https://en.wikipedia.org/wiki/Cartesian_product). I did not see their solution, but tried out figure out my own solution. I learned something about JavaScript, functional programming and performance, which I will share in this article.
 <!--more-->
 Common implementations of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) model the grid of the "playing field" as nested arrays of rows and columns. An example of a 3x3 grid could look like this:
 
@@ -64,7 +64,7 @@ const modifiers = [
 ];
 ```
 
-Don't want to use this grid directly but generate 9 coordinate tuples out of the initial coordinate tuple. A functional way of doing this is `map`:
+I don't want to use this grid directly, but generate 9 coordinate tuples out of the initial coordinate tuple. A functional way of doing this is `map`:
 
 ```javascript
 function generateCoordinates( coordinate ) {
