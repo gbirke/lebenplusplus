@@ -18,7 +18,7 @@ conference](https://www.youtube.com/watch?v=1bJzZvGLVzc&list=PL6fFtAv7wTb9gAbykl
 
 This article is a summary of some talks.
 
-<!-- more -->
+<!--more-->
 
 ## Approval Testing
 I've encountered this testing method under the name "Golden Master" test,
