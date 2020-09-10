@@ -7,8 +7,18 @@ tags:
   - testing
 categories:
   - wikimedia
-description: ""
+description: "My notes on talks on Approval Testing, Techniques for
+dealing with legacy code and Test-Commit-Revert"
 ---
+
+"The Legacy of SoCraTes" is a virtual conference with talks on testing and
+legacy code. You can find all the talks of the 3rd edition in [the YouTube
+playlist for the
+conference](https://www.youtube.com/watch?v=1bJzZvGLVzc&list=PL6fFtAv7wTb9gAbyklYJ2bsGmM4ykBTA1).
+
+This article is a summary of some talks.
+
+<!-- more -->
 
 ## Approval Testing
 I've encountered this testing method under the name "Golden Master" test,
@@ -65,7 +75,9 @@ understand a function or module.
   of code. 
 * Have a "stronghold", a well-understood part of the code. Ask the tech
   lead or the stakeholders what the most important use case is and find it
-  in the code, starting from the input or output.
+  in the code, starting from the input or output. Use the stronghold as
+  the focal point from which to explore the code base. As time goes by,
+  you will get more than one stronghold.
 * Analyze call stack to see which modules or layers of application uses to
   implement the functionality of a use case.
   
