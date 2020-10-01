@@ -2,10 +2,14 @@
 title: "Integrating Vuex with the Vue Composition API"
 date: 2020-09-27
 tags:
-  - conference
+  - Vue
+  - Vuex
+  - composition API
+  - JavaScript
 categories:
   - wikimedia
 description: "How to use the new Composition API with Vuex"
+draft: true
 ---
 This post shows my step-by-step journey using the Vue composition API in a
 Vue project that uses Vuex. I started with the question "How can you
@@ -72,25 +76,22 @@ export default new Vuex.Store({
 });
 ```
 
-With this setup, using Vuex is over-engineering since the main purpose of
-Vuex is to share state between components and I only have one component
-that could keep its state internally. Now that I want to add a second
-`AwesomenessComponent` that's using the composition API, this will change
-because all components should share the Vuex store - if I toggle the
-awesomeness in the "classic" component, I want the state of the
-composition based component to change too.
+With only one component, using Vuex is over-engineering since the main
+purpose of Vuex is to share state between components. But my example
+should demonstrate how to mix and match components using the composititon
+API and the "classic" style of using Vuex, demonstrating that they all
+share the same store.
 
-## First attempt - getting the store from the parent
+
+## First attempt - getting the store from the root element
 
 In the `setup` method of the component API you don't have a reference to
 the Vue component instance. Therefore, you can't call `this.$store`. There
 is a workaround, though: The `setup` method has a second parameter,
-`context`, that allows you to access the *parent* instance of the Vue
-component. If that parent instance has a store, then you can call that
-store instance. In my opinion, that's not a good solution because it
-introduces a hidden, implicit dependency, making it harder to use and to
-test, because you'll always have to remember to set up the parent instance
-with a store. But it works and I can create a component that looks like this:
+`context`, that allows you to access the *root* instance of the Vue
+component tree. If that root instance has a store (because the application
+initialization code called `Vue.use(Vuex)`), then you can access that
+store instance. The component looks like this:
 
 ```vue
 <template>
@@ -107,7 +108,7 @@ import { computed } from "@vue/composition-api";
 
 export default {
   setup(_, ctx) {
-  	const store = ctx.parent.$store;
+  	const store = ctx.root.$store;
     const awesomeness = computed(() => store.state.awesomeness);
   	const toggle = () => store.commit("toggleAwesomeness");
   	return { awesomeness, toggle };
@@ -123,7 +124,12 @@ example repository](https://github.com/gbirke/vuex-composition-doodle)
 shows how to put the behavior in a separate module, but for reading the
 examples side by side I chose this structure.
 
-## A better version - using Node module singleton pattern
+The unit test for this component needs one more line than the test for the
+"classic" unit test - adding the composition API wrapper plugin to the
+local Vue instance. With Vue 3, even that line will become unneccessary. 
+
+
+## Second attempt - using Node module singleton pattern
 
 I admit that I prefer to write object-oriented backend code, using PHP with
 dependency injection and implicit instantiation. I still have to get used
@@ -155,8 +161,20 @@ export default {
 };
 ```
 
-So that's how you use an existing Vuex store with the composition API -
-import it and call its methods. Alternatively, you could use the `provide` and
+What looks straightforward and concise, becomes a nightmare to test: You
+have to mock the imported `store` module. All my attempts to use `Jest.mock` failed
+because mocking a module means you have to import it at the top of the
+test. But before you can import it, you have to parameterize
+the returned mock, which is impossible, because the import of the mocked
+module has to happen before any other code is executed. Maybe some
+Jest-Gurus can enlighten me with a [pull
+request](https://github.com/gbirke/vuex-composition-doodle).
+
+## Third attempt - using provide and inject
+You can still use the singleton behavior of node modules to inject a
+default store when calling `provide`. The  
+
+Alternatively, you could use the `provide` and
 `inject` functions from the composition API to provide a store to the
 components. Using `provide` and `inject` has the added benefit not having
 to override the `import` statements in your tests, which my backend-coder
