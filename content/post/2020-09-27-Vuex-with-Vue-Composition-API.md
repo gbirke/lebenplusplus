@@ -250,8 +250,8 @@ In my [example
 repository](https://github.com/gbirke/vuex-composition-doodle), I have
 wrapped the calls to `provide` and `inject` in custom function calls to
 make them more semantic and enable searching for specific usages of the
-store, in case you have other usages of `inject`. It also hides the usage
-of `inject`, so you could use a different state management library later.
+store, in case you use `inject` for several values. It also encapsulates
+`inject`, so you could use a different state management library later.
 
 ## Replacing Vuex with your own state management
 If you want to replace Vuex with your custom state management, I recommend
