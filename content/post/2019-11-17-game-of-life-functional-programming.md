@@ -142,7 +142,8 @@ function findNeighbors( grid, row, col ) {
 
 Surprisingly, this implementation with its 8 function calls is still 10 times slower than the first "conditional" implementation with the same amount fo function calls. There are some reasons I can think of: The memory and instruction overhead of the array manipulation via `push`, the overhead of the anonymous `reduce` function forming a closure with `grid`, a general overhead of `reduce` and the additional boolean checks for each coordinate: compared to the first implementation, the number of checks for each coordinate pair doubles or quadruples. But these are speculations, I briefly tried to look at what the code is doing with a profiler, but did not get conclusive results.
 
-I was curious how the "cartesian product" approach would fare if I implemented it in a procedural style with nested `for` loops and `if` coditions. To my surprise, it performed 10% better than the first implementation.
+I was curious how the "cartesian product" approach would fare if I
+implemented it in a procedural style with nested `for` loops and `if` conditions. To my surprise, it performed 10% better than the first implementation.
 
 
 ```javascript
