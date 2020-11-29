@@ -14,6 +14,9 @@ jobs:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
         
       - name: Build blog
         uses: jakejarvis/hugo-build-action@master  # ...or replace 'master' with a full version tag, such as: v0.64.1
