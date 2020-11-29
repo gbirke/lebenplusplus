@@ -1,4 +1,4 @@
-name: Super-Linter
+name: Build and deploy blog
 
 # Run this workflow every time a new commit pushed to your repository
 on: push
@@ -28,3 +28,13 @@ jobs:
         with:
           name: website
           path: './public'
+          
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -v --recursive --times --delete --prune-empty-dirs --filter='P .htaccess' --checksum
+          path: public/
+          remote_path: ${{ secrets.DEPLOY_TARGET_DIR }}
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOY_SSH }}  
