@@ -3,7 +3,7 @@ baseURL = "https://lebenplusplus.de/"
 languageCode = "en-us"
 title = "Leben++"
 theme = "blackburn"
-Copyright = "&copy; 2018 by Gabriel Birke"
+Copyright = "&copy; {year} by Gabriel Birke"
 pygmentsCodeFences = true
 ignorefiles = [ "drafts" ]
 
