@@ -7,7 +7,7 @@ tags:
 description: "Use SUM(CASE WHEN) statements to turn SQL columns into rows" 
 ---
 
-"Transposing" or "privoting" rows to columns in a database query is a
+"Transposing" or "pivoting" rows to columns in a database query is a
 common task. These are my notes on how I evolved a SQL query to get the
 desired result.
 
