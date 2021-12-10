@@ -34,13 +34,13 @@ find -f tests src -name '*.php' | entr -s 'vendor/bin/phpunit'
 long-running tests, you might want to use the `--filter` parameter for the
 PHPUnit command and use more specific directories in the `find` command.
 
-Additionalliy to its terminal output, PHPUnit can also generate an HTML
+Additionally to its terminal output, PHPUnit can also generate an HTML
 report with the argument `--testdox-html report/index.html`. You can name
 this anything you want, but make sure you avoid checking in the report in
 your version control.
 
-You can open the HTML file in ypur browser, but if you want to refrest it
-autuomaticlly after eauch run of PHPUnit, you need a web server that sends
+You can open the HTML file in your browser, but if you want to refresh it
+automatically after each run of PHPUnit, you need a web server that sends
 a "refresh" signal to the browser the file `report/index.html` changes.
 I recommend using [browser-sync](https://browsersync.io/) for that. After
 installing with `npm install -g browser-sync`, you can serve the report with
