@@ -71,10 +71,23 @@ shape][2] for PHPStan. Array shapes define the string keys and value types
 of an associative array. Our own code doesn't use an array shape. Instead
 it defines an array that has string keys and mixed values.
 
-Looking at the [source code for `DriverManager::getConnection()`][4] we can see
-that it defines an array shape for [Psalm][3], another static type
-checker. Luckily, PHPStan will interpret Psalm annotations. This allows us
-to import the type definitions from `DriverManager` like this:
+We don't use all the driver options in our configuration and could provide a
+custom array shape that would fulfill the PHPStan requirements and serve
+as documentation:
+
+```php
+/**
+ * @param array{host:string,dbname:string,user:string,password:string} $dbConfig
+ */
+public function __construct( private array $dbConfig ) {}
+```
+
+But there is an even easier, shorter, future-proof and less repetitive way
+to specify the array shape: Importing it from Doctrine.Looking at the
+[source code for `DriverManager::getConnection()`][4] we can see that it
+defines an array shape for [Psalm][3], another static type checker.
+Luckily, PHPStan will interpret Psalm annotations. This allows us to
+import the type definitions from `DriverManager` like this:
 
 ```php
 use Doctrine\DBAL\DriverManager;
@@ -111,4 +124,4 @@ return types.
 [1]: https://phpstan.org/
 [2]: https://phpstan.org/writing-php-code/phpdoc-types#array-shapes
 [3]: https://psalm.dev/
-[4]: https://github.com/doctrine/dbal/tree/3.3.x/src
+[4]: https://github.com/doctrine/dbal/tree/3.3.x/src#45
