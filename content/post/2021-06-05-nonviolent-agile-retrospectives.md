@@ -235,16 +235,30 @@ feeling:
 
 If other people can dispute a statement that looks like a feeling ("But
 I'm including you", "I understood what you said"), then there is a high
-chance that it's a thought. Genuine feelings like "*I feel sad*", "I feel
-lonely" are hard to dispute.
+chance that it's a thought. Genuine feelings like "*I feel sad*", "*I feel
+lonely*" are hard to dispute.
 
 Expressing your feelings in a workplace environment can feel risky,
-because it makes you vulnerable. And in the tech world, it's
-still not common to talk about feelings and some people might even judge 
-it as "unprofessional". But even if you're in an environment where you
-can't talk about feelings, applying the NVC mindset and examining your
-feelings, distinguishing between feelings and thoughts, will help you to
-avoid conflicts and get a better connection to yourself.
+because it makes you vulnerable. And in the tech world, it's still not
+common to talk about feelings and some people might even judge it as
+"unprofessional". But that doesn't mean you don't *have* feelings, only
+that you might be not comfortable expressing them at the workplace.
+Nonviolent Communication is still useful, because you can *examine* your
+feelings. Naming them will help you to get a better understanding of
+yourself and a better connection to yourself. Distinguishing between
+feelings and thoughts, will help you to avoid conflicts.
+
+### For facilitators
+
+- Encourage particicpants to share feelings, but don't pressure anyone to
+	share feelings (see section "Requests").
+- Lead by example by expressing your own feelings.
+- When people express "thought-feelings", try to paraphrase them with
+	different words, as a question. If you're not prescribing feelings but
+	asking in form of a question it doesn't matter if you can guess the "right" words
+	or not.
+
+### For participants
 
 In the collection phase, while writing down your sentences, ask yourself,
 how you felt in the situation you're describing. Have look at a list of
@@ -253,7 +267,6 @@ feelings, to get an idea of what you might feel.
 Trust your gut feelings when voting, to see which issues you feel strongly
 about.
 
-The benefit of vulnerability
 
 Improve Collection and Discussion phase by expressing your feelings (with
 examples)
@@ -262,6 +275,7 @@ examples)
 ---
 Notes/todo
 
+The benefit of vulnerability
 
 The voting process shows that our needs can have different priorities. If
 we listen to our instincts and feelings, we get a measurement of how
