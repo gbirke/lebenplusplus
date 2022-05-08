@@ -4,6 +4,9 @@ date: 2022-05-09
 tags:
   - PHP
   - testing
+  - test doubles
+  - mocks
+  - PHPUnit
   - architecture
 categories:
   - wikimedia
@@ -27,8 +30,9 @@ code in the class and to be able to cover all code paths in the class.
 This means
 
 - You need to set up the test doubles in each test
-- You might need different versions of each test double to 
-  - simulate returning different values (stubs)
+- You might need different versions of each test double to
+  - Do nothing except accept method calls (stubs) 
+  - simulate returning different values (fakes)
   - check call parameters (spies)
   - checking different behaviors (mocks)
 
@@ -95,16 +99,34 @@ benefit of [not repeating yourself][9] has the drawback of the reader
 needing to go the each method definition to see how the test double
 actually looks like. 
 
-Setting up the mock classes with expectation inline also has the drawback
-that you'll lose the [Arrange-Act-Assert][11] pattern. The explicit
-example made at least an attempt to separate the stages with blank lines,
-even if it had to do it in the order of Assert-Arrange-Act due to the API
-of the PHPUnit mock framework. You could bring back the distinction by
-putting the repository into a variable, but some IDEs will highlight
-variables that can be inlined.
-
 For the rest of this article I'll use this concise style of initializing
-test doubles.
+test doubles with factory methods and will continue to use the PHPUnit
+test double API.
+
+### Side note: Arrange-Act-Assert and the PHPUnit test double API
+
+In the long, unrefactored example you can see two blank lines separating
+parts of the code. I've put the blank lines there on purpose, to highlight
+the [Arrange-Act-Assert][11] pattern. Having a [blank line budget of 2 in
+tests][15], separating the 3 test sections was what inspired me to write
+this article. The [test double API of PHPUnit][14] hides the assertions
+from the test doubles. In my first example I used the setup of the mock
+expectations as a section, making it an "Expect-Arrange-Act" pattern.
+
+If you want to avoid Expect-Arrange-Act and  apply the Arrange-Act-Assert
+pattern more consistently in your tests, you'll need to use a different
+API than PHPUnit:
+
+- Replace your mocks and spies with custom implementations of your
+	interfaces. This gives you full control over how you return data, what
+	data you collect, etc. For small implementations you can use
+	inline anonymous classes, as outlined in the article "[Don't use
+	mocking libraries][16]".
+- Use a different mocking library like [Phake][15] that allows for explicit
+    checking inside the test code.
+
+In this article I'll continue to use the PHPUnit test double API and point
+out implementations that allow blank lines that highlight Expect-Arrange-Act pattern.
 
 ### Problem definition: Initializing a system-under-test with many dependencies
 
@@ -113,8 +135,7 @@ adding more features and dependencies in external services:
 
 - a validation service to prevent spam and offensive user names,
 - a moderation service where the use case notifies people with administrative privileges that they have to activate the user,
-- a payment service that needs to be notified to prepare the membership
-    subscriptions of the user.
+- a payment service that prepares the membership subscription plan for the user.
 
 You could argue that now would be a good time to introduce an
 [event-sourcing][10] architecture that decouples the user creation from
@@ -205,10 +226,58 @@ future-proof to me.
 
 ## Solution 2: Builder pattern with fluent interface
 
+```php
+public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
+	$useCase = $this->newUseCaseBuilder()
+		->withRepositoryMockThatExpectsNoNewData()
+		->withFailingPermissionChecker()
+		->build()
+
+    $useCase->createUser( $this->newCreateUserDTO());
+}
+```
+
+The builder class does not follow the classic, polymorphic [Builder
+Pattern][12] with the same methods returning different implementations.
+Instead, we still use descriptive factory method names, replacing the
+`create` prefix with a `with` prefix to make the [fluent interface][13]
+more readable.
+
+The builder class is a separate, stateful class where the `withXXX()`
+factory methods set internal properties and the `build()` method uses
+defaults for unset properties. Here is an example `build()` method from
+the builder class:
+
+```php
+pulic function build(): CreateUserUseCase {
+	return new CreateUserUseCase(
+		$this->repository ?? $this->createUserRepositoryStub(),
+		$this->permissionChecker ?? $this->createSucceedingPermissionChecker(),
+		$this->confirmationMailSender ?? $this->createConfirmationMailSenderStub(),
+		$this->validationService ?? $this->createSucceedingValidationService(),
+		$this->moderationService ?? $this->createModerationServiceStub(),
+		$this->paymentService ?? $this->$this->createPaymentServiceStub(),
+	);
+}
+```
+
+I like the builder solution because putting it in a separate class gives
+me a [Separation of Concerns][17] between *creating* my test doubles and
+the test that *uses* them. You can also see the separation as a drawback,
+because it moves the test double creation even further form the actual
+tests, making code navigation outside an IDE even harder.
+
+
+
+
 TODO: inline builder vs external class (harder to do with vanilla PHPUnit
 because its mocking API is closely)
 
 ## Solution 3: Factory function with nullable named parameters
 
-
-
+[1]: https://www.martinfowler.com/articles/mocksArentStubs.html
+[11]: https://automationpanda.com/2020/07/07/arrange-act-assert-a-pattern-for-writing-good-tests/
+[13]: https://en.wikipedia.org/wiki/Fluent_interface
+[15]: https://code.joejag.com/2018/two-line-budget.html
+[16]: https://steemit.com/php/@crell/don-t-use-mocking-libraries
+[17]: https://en.wikipedia.org/wiki/Separation_of_concerns
