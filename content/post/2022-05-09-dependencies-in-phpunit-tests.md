@@ -1,6 +1,6 @@
 ---
 title: Managing test doubles in PHP unit tests
-date: 2022-05-08
+date: 2022-05-09
 tags:
   - PHP
   - testing
@@ -24,23 +24,25 @@ using a builder pattern with a fluent interface and using named parameters
 
 ## What's the problem we're trying to solve?
 
-When unit-testing classes you usually replace the all its [injected
+When unit-testing classes you replace some or all [injected
 dependencies][3] with [test doubles][1], to ensure you're only testing the
 code in the class and to be able to cover all code paths in the class.
 This means
 
-- You need to set up the test doubles in each test
-- You might need different versions of each test double to
-  - Do nothing except accept method calls (stubs) 
+- You need to set up the dependencies in each test
+- You might need to replace each dependency with different types of test doubles to
+  - do nothing except accept method calls (stubs) 
   - simulate returning different values (fakes)
   - check call parameters (spies)
   - checking different behaviors (mocks)
 
 If you include the test double setup in the test body, your test will get
 longer and less readable. And the more dependencies a class has, the
-longer its initialization will be.
+longer its initialization will be. The initialization code will also contain a lot of
+repetition, making it harder to compare two tests side-by-side to see what
+the difference is between them.
 
-### Side note: Creating shorter tests with factory functions
+### Creating shorter tests with factory functions
 
 Have a look at the following PHPUnit test for a typical use case with 
 three dependencies:
@@ -58,7 +60,7 @@ public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
         $this->createStub(ConfirmationMailSender::class)
     );
 
-    $useCase->createUser(new CreateUserDTO(
+    $useCase->createUser(new CreateUserData(
         'John Doe',
         'test@example.com',
         'test-password',
@@ -70,7 +72,7 @@ public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
 The test is for a typical "use case" class from the [hexagonal
 architecture][2], orchestrating different services for creating a user:
 Checking if creating the user is allowed, creating a user entity from a
-[data transfer object][4], storing it in a [repository][5] and notifying
+[value object][4], storing it in a [repository][5] and notifying
 the new user via email. We don't want to test the use case with the
 production permissions, a real database or a real mail server. Instead, we
 set up test doubles. But the test is hard to read. You could even argue
@@ -86,7 +88,7 @@ public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
         $this->createConfirmationMailSenderStub()
     );
 
-    $useCase->createUser( $this->newCreateUserDTO());
+    $useCase->createUser( $this->newCreateUserData());
 }
 ```
 
@@ -154,7 +156,7 @@ public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
         $this->createPaymentServiceStub()
     );
 
-    $useCase->createUser( $this->newCreateUserDTO());
+    $useCase->createUser( $this->newCreateUserData());
 }
 ```
 
@@ -203,14 +205,14 @@ public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
     $this->permissionChecker = $this->createFailingPermissionChecker();
     $useCase = $this->newUseCase()
 
-    $useCase->createUser( $this->newCreateUserDTO());
+    $useCase->createUser( $this->newCreateUserData());
 }
 ```
 
 This example shows the two additional methods, `setUp` and `newUseCase`
 which add more code. But the test code itself is much shorter and
 all following tests will be short and not-repetitive as well. Using
-properties also allows us to separate the [Assert-Arrange-Act][11] steps
+properties also allows us to separate the [Expect-Arrange-Act][11] steps
 again.
 
 Looking at the code under the aspect of architecture and resource usage,
@@ -233,7 +235,7 @@ public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
         ->withFailingPermissionChecker()
         ->build();
 
-    $useCase->createUser( $this->newCreateUserDTO());
+    $useCase->createUser( $this->newCreateUserData());
 }
 ```
 
@@ -250,7 +252,7 @@ the `build()` method uses defaults for unset properties. Here is an
 example `build()` method from the builder class:
 
 ```php
-pulic function build(): CreateUserUseCase {
+public function build(): CreateUserUseCase {
     return new CreateUserUseCase(
         $this->repository ?? $this->createUserRepositoryStub(),
         $this->permissionChecker ?? $this->createSucceedingPermissionChecker(),
@@ -263,8 +265,8 @@ pulic function build(): CreateUserUseCase {
 ```
 
 You can put the `newUseCase()` and `build()` methods in the test case
-class. But for a better [Separation of Concerns][17] between *creating* my test doubles and
-the test that *uses* them I like to put all factory and build methods in a
+class. But for a better [Separation of Concerns][17] between *creating* test doubles and
+the test that *uses* them, I like to put all factory and build methods in a
 separate class. Using the [PHPUnit test double API][14] becomes harder
 with an external class, because you need to initialize the [`MockBuilder`
 class][18] directly (with the test case as a dependency) and need to make
@@ -273,18 +275,71 @@ the same function calls as the protected [`createMock()` method of the
 need PHPUnit test doubles.
 
 
+## Solution 3: Factory function with nullable parameters, called with named arguments
 
-## Solution 3: Factory function with nullable named parameters
+```php
+private function newUseCase(
+    UserRepository $repository,
+    PermissionChecker $permissionChecker,
+    ConfirmationMailSender $confirmationMailSender,
+    ValidationService $validationService,
+    ModerationService $moderationService,
+    PaymentService $paymentService
+): CreateUserUseCase {
+    return new CreateUserUseCase(
+        $repository ?? $this->createUserRepositoryStub(),
+        $permissionChecker ?? $this->createSucceedingPermissionChecker(),
+        $confirmationMailSender ?? $this->createConfirmationMailSenderStub(),
+        $validationService ?? $this->createSucceedingValidationService(),
+        $moderationService ?? $this->createModerationServiceStub(),
+        $paymentService ?? $this->$this->createPaymentServiceStub(),
+    );   
+    }
 
-TODO: When using separate class, use static method
+public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
+    $useCase = $this->newUseCase(
+        repository: $this->createRepositoryMockThatExpectsNoNewData(),
+        permissionChecker: $this->createFailingPermissionChecker()
+    );
+
+    $useCase->createUser( $this->newCreateUserData());
+}
+```
+
+This example looks similar to the builder, but uses [named arguments][20], introduced in PHP 8, instead of a
+fluent interface. This allows us to remove the `build` method, saving us
+one more line in each test method.
+
+The example puts the factory methods in the test class, but you can also
+put the factory methods in a separate class (see the builder solution or
+benefits and drawbacks).
+
+## Conclusion
+
+- Use the [Arrange-Act-Assert][11] pattern to make your tests as short,
+    expressive and readable as possible.
+- The shortest and most concise way to initialize a class with many
+    dependencies is to use a factory method with nullable parameters that
+    initialize the class with default implementations.
 
 
 [1]: https://www.martinfowler.com/articles/mocksArentStubs.html
-[11]: https://automationpanda.com/2020/07/07/arrange-act-assert-a-pattern-for-writing-good-tests/
-[13]: https://en.wikipedia.org/wiki/Fluent_interface
+[2]: https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)
+[3]: https://en.wikipedia.org/wiki/Dependency_injection
+[4]: https://en.wikipedia.org/wiki/Value_object
+[5]: https://martinfowler.com/eaaCatalog/repository.html
+[6]: https://en.wikipedia.org/wiki/Single-responsibility_principle
+[7]: https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)
+[8]: https://en.wikipedia.org/wiki/Domain-specific_language
+[9]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 
+[11]: https://automationpanda.com/2020/07/07/arrange-act-assert-a-pattern-for-writing-good-tests/
+[12]: https://en.wikipedia.org/wiki/Builder_pattern
+[13]: https://en.wikipedia.org/wiki/Fluent_interface
+[14]: https://phpunit.readthedocs.io/en/9.5/test-doubles.html
 [15]: https://code.joejag.com/2018/two-line-budget.html
 [16]: https://steemit.com/php/@crell/don-t-use-mocking-libraries
 [17]: https://en.wikipedia.org/wiki/Separation_of_concerns
 [18]: https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/MockBuilder.php
 [19]: https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L2077
+[20]: https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments
