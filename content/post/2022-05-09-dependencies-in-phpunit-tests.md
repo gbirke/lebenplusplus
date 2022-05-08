@@ -1,6 +1,6 @@
 ---
 title: Managing test doubles in PHP unit tests
-date: 2022-05-09
+date: 2022-05-08
 tags:
   - PHP
   - testing
@@ -12,13 +12,13 @@ categories:
   - wikimedia
 ---
 
-The more dependencies a class has, the harder it gets to initialize it in
-unit tests with all its dependencies, without making the tests
-unnecessarily long. This articles explores three ways to provide [test
-doubles][1] (also known as "mocks") to your tested class, while keeping
-the tests as short and expressive as possible: Using properties in the
-test class, using a builder pattern with a fluent interface and using
-named parameters (available in PHP 8.x).
+The more dependencies a class has, the harder it becomes to initialize in
+unit tests with all its dependencies. Your tests will become longer and
+longer. This articles explores three ways to provide [test doubles][1]
+(also known as "mocks") to your tested class, while keeping the tests as
+short and expressive as possible: Using properties in the test class,
+using a builder pattern with a fluent interface and using named parameters
+(available in PHP 8.x).
 
 <!-- more -->
 
@@ -48,7 +48,7 @@ three dependencies:
 ```php
 public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
     $repository = this->createMock(UserRepository::class);
-	$repository->expects($this->never())->method('storeUser');
+    $repository->expects($this->never())->method('storeUser');
 
     $permissionChecker = $this->createStub(PermissionChecker::class);
     $permissionChecker->method('hasPermission')->willReturn(false);
@@ -118,10 +118,10 @@ pattern more consistently in your tests, you'll need to use a different
 API than PHPUnit:
 
 - Replace your mocks and spies with custom implementations of your
-	interfaces. This gives you full control over how you return data, what
-	data you collect, etc. For small implementations you can use
-	inline anonymous classes, as outlined in the article "[Don't use
-	mocking libraries][16]".
+    interfaces. This gives you full control over how you return data, what
+    data you collect, etc. For small implementations you can use
+    inline anonymous classes, as outlined in the article "[Don't use
+    mocking libraries][16]".
 - Use a different mocking library like [Phake][15] that allows for explicit
     checking inside the test code.
 
@@ -169,42 +169,41 @@ step too far, because they don't like this level of indirection. But I
 like my tests to be short and readable, so I thought about how to create
 such a factory function.
 
-In the following sections I'll show three approaches on how to shorten the
-initialization of the system under test.
+In the following sections I'll show three approaches on **how to shorten the
+initialization of the system under test**.
 
 
 ## Solution 1: Test case properties and default setup
 
 ```php
 public function setUp(): void {
-	// Set up happy-path validators and service stubs
-	$this->repository = $this->createUserRepositoryStub();
-	$this->permissionChecker = $this->createSucceedingPermissionChecker();
-	$this->confirmationMailSender = $this->createConfirmationMailSenderStub();
+    // Set up happy-path validators and service stubs
+    $this->repository = $this->createUserRepositoryStub();
+    $this->permissionChecker = $this->createSucceedingPermissionChecker();
+    $this->confirmationMailSender = $this->createConfirmationMailSenderStub();
     $this->validationService = $this->createSucceedingValidationService();
-	$this->moderationService = $this->createModerationServiceStub();
-	$this->paymentService = $this->$this->createPaymentServiceStub();
-}
-
-
-public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
-	$this->repository = $this->createRepositoryMockThatExpectsNoNewData();
-
-    $this->permissionChecker = $this->createFailingPermissionChecker();
-	$useCase = $this->newUseCase()
-
-    $useCase->createUser( $this->newCreateUserDTO());
+    $this->moderationService = $this->createModerationServiceStub();
+    $this->paymentService = $this->$this->createPaymentServiceStub();
 }
 
 private function newUseCase(): CreateUserUseCase {
-	return new CreateUserUseCase(
-		$this->repository,
-		$this->permissionChecker,
-		$this->confirmationMailSender,
-		$this->validationService,
-		$this->moderationService,
-		$this->paymentService,
-	);
+    return new CreateUserUseCase(
+        $this->repository,
+        $this->permissionChecker,
+        $this->confirmationMailSender,
+        $this->validationService,
+        $this->moderationService,
+        $this->paymentService,
+    );
+}
+
+public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
+    $this->repository = $this->createRepositoryMockThatExpectsNoNewData();
+
+    $this->permissionChecker = $this->createFailingPermissionChecker();
+    $useCase = $this->newUseCase()
+
+    $useCase->createUser( $this->newCreateUserDTO());
 }
 ```
 
@@ -214,24 +213,25 @@ all following tests will be short and not-repetitive as well. Using
 properties also allows us to separate the [Assert-Arrange-Act][11] steps
 again.
 
-Looking at the code under the aspect of architecture and resource usage, this is
-my least favourite solution: The `setUp` method will always initialize the
-test doubles, even if later tests will override it. This pattern also
-introduces properties to the test class (the example does not show their
-declaration), making the class stateful. As long as PHP and PHPUnit are
-single-threaded or at least don't reuse the same test class instance in
-multiple threads at the same time, this is not a problem. But it still feels not
-future-proof to me.
+Looking at the code under the aspect of architecture and resource usage,
+this is my least favourite solution: The `setUp` method will always
+initialize the test doubles, even if later tests will override it. This
+pattern also introduces properties to the test class (the example does not
+show their declaration), making the class stateful. As long as PHP and
+PHPUnit are single-threaded or at least don't reuse the same test class
+instance in multiple threads at the same time, this is not a problem. But
+I like to think of unit tests as [pure functions][18] that have no side
+effects, so I don't like using mutable properties in my test cases.
 
 
 ## Solution 2: Builder pattern with fluent interface
 
 ```php
 public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
-	$useCase = $this->newUseCaseBuilder()
-		->withRepositoryMockThatExpectsNoNewData()
-		->withFailingPermissionChecker()
-		->build()
+    $useCase = $this->newUseCaseBuilder()
+        ->withRepositoryMockThatExpectsNoNewData()
+        ->withFailingPermissionChecker()
+        ->build();
 
     $useCase->createUser( $this->newCreateUserDTO());
 }
@@ -240,44 +240,51 @@ public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
 The builder class does not follow the classic, polymorphic [Builder
 Pattern][12] with the same methods returning different implementations.
 Instead, we still use descriptive factory method names, replacing the
-`create` prefix with a `with` prefix to make the [fluent interface][13]
+`create` prefix from the previous example with a `with` prefix to make the [fluent interface][13]
 more readable.
 
-The builder class is a separate, stateful class where the `withXXX()`
-factory methods set internal properties and the `build()` method uses
-defaults for unset properties. Here is an example `build()` method from
-the builder class:
+The implementation is similar to the property-based approach, but with the
+difference that the builder does not pre-initialize the properties. The
+`withXXX()` factory methods set the properties of the builder class and
+the `build()` method uses defaults for unset properties. Here is an
+example `build()` method from the builder class:
 
 ```php
 pulic function build(): CreateUserUseCase {
-	return new CreateUserUseCase(
-		$this->repository ?? $this->createUserRepositoryStub(),
-		$this->permissionChecker ?? $this->createSucceedingPermissionChecker(),
-		$this->confirmationMailSender ?? $this->createConfirmationMailSenderStub(),
-		$this->validationService ?? $this->createSucceedingValidationService(),
-		$this->moderationService ?? $this->createModerationServiceStub(),
-		$this->paymentService ?? $this->$this->createPaymentServiceStub(),
-	);
+    return new CreateUserUseCase(
+        $this->repository ?? $this->createUserRepositoryStub(),
+        $this->permissionChecker ?? $this->createSucceedingPermissionChecker(),
+        $this->confirmationMailSender ?? $this->createConfirmationMailSenderStub(),
+        $this->validationService ?? $this->createSucceedingValidationService(),
+        $this->moderationService ?? $this->createModerationServiceStub(),
+        $this->paymentService ?? $this->$this->createPaymentServiceStub(),
+    );
 }
 ```
 
-I like the builder solution because putting it in a separate class gives
-me a [Separation of Concerns][17] between *creating* my test doubles and
-the test that *uses* them. You can also see the separation as a drawback,
-because it moves the test double creation even further form the actual
-tests, making code navigation outside an IDE even harder.
+You can put the `newUseCase()` and `build()` methods in the test case
+class. But for a better [Separation of Concerns][17] between *creating* my test doubles and
+the test that *uses* them I like to put all factory and build methods in a
+separate class. Using the [PHPUnit test double API][14] becomes harder
+with an external class, because you need to initialize the [`MockBuilder`
+class][18] directly (with the test case as a dependency) and need to make
+the same function calls as the protected [`createMock()` method of the
+`TestCase` class][19]. I only use external builder classes when I don't
+need PHPUnit test doubles.
 
 
-
-
-TODO: inline builder vs external class (harder to do with vanilla PHPUnit
-because its mocking API is closely)
 
 ## Solution 3: Factory function with nullable named parameters
+
+TODO: When using separate class, use static method
+
 
 [1]: https://www.martinfowler.com/articles/mocksArentStubs.html
 [11]: https://automationpanda.com/2020/07/07/arrange-act-assert-a-pattern-for-writing-good-tests/
 [13]: https://en.wikipedia.org/wiki/Fluent_interface
+
 [15]: https://code.joejag.com/2018/two-line-budget.html
 [16]: https://steemit.com/php/@crell/don-t-use-mocking-libraries
 [17]: https://en.wikipedia.org/wiki/Separation_of_concerns
+[18]: https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/MockBuilder.php
+[19]: https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L2077
