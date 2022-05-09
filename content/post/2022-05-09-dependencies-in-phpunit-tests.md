@@ -139,11 +139,7 @@ adding more features and dependencies in external services:
 - a moderation service where the use case notifies people with administrative privileges that they have to activate the user,
 - a payment service that prepares the membership subscription plan for the user.
 
-You could argue that now would be a good time to introduce an
-[event-sourcing][10] architecture that decouples the user creation from
-user-adjacent services, but let's assume that introducing such an
-architecture would be too much effort at the moment and you still want to
-improve your tests. Look at how verbose the test setup has become:
+Look at how verbose the test setup has become:
 
 ```php
 public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
@@ -159,6 +155,12 @@ public function testGivenFailedPermissionCheckThenNoUserWillBeCreated(): void {
     $useCase->createUser( $this->newCreateUserData());
 }
 ```
+
+You could argue that so many parameters are a code smell, signifying that
+the class does too much. I do agree, I picked the extreme example on
+purpose. The 3 different patterns for initializing a class with many
+constructor parameters will show that even for 3-4 dependencies the code
+will get shorter and more readable.
 
 The only services that are relevant to this test are the repository mock
 (which checks that the code does not create a user) and the permission
@@ -332,7 +334,6 @@ benefits and drawbacks).
 [7]: https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)
 [8]: https://en.wikipedia.org/wiki/Domain-specific_language
 [9]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
-
 [11]: https://automationpanda.com/2020/07/07/arrange-act-assert-a-pattern-for-writing-good-tests/
 [12]: https://en.wikipedia.org/wiki/Builder_pattern
 [13]: https://en.wikipedia.org/wiki/Fluent_interface
