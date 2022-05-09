@@ -281,12 +281,12 @@ need PHPUnit test doubles.
 
 ```php
 private function newUseCase(
-    UserRepository $repository,
-    PermissionChecker $permissionChecker,
-    ConfirmationMailSender $confirmationMailSender,
-    ValidationService $validationService,
-    ModerationService $moderationService,
-    PaymentService $paymentService
+    ?UserRepository $repository = null,
+    ?PermissionChecker $permissionChecker = null,
+    ?ConfirmationMailSender $confirmationMailSender = null,
+    ?ValidationService $validationService = null,
+    ?ModerationService $moderationService = null,
+    ?PaymentService $paymentService = null
 ): CreateUserUseCase {
     return new CreateUserUseCase(
         $repository ?? $this->createUserRepositoryStub(),
