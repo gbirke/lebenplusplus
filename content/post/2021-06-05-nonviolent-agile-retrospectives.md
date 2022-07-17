@@ -23,7 +23,7 @@ software development, but also suitable for teams outside of software
 development. Its main purpose is the continuous improvement
 ([Kaizen](https://en.wikipedia.org/wiki/Kaizen)) of processes,
 collaboration and work itself. Other benefits are knowledge sharing and
-building trust and community.
+building trust and community inside the team.
 
 The team holds retrospective in regular intervals (e.g. bi-weekly, monthly,
 quarterly, etc), evaluating the past interval, how things improved
@@ -64,7 +64,7 @@ interval that answer the questions, using sticky notes, a sheet of paper
 or retrospective software. The notes should be only a few words. Each
 participant working on their own has the benefit of not forming a
 consensus too early, reducing the influence of the more vocal people in
-the group and getting some output of the more withdrawn personalities.
+the group and getting input from more withdrawn personalities.
 
 The participants then gather and present their findings, describing the
 word on each of their notes in one or two sentences and assigning each
@@ -77,7 +77,7 @@ a joyful celebration of successes that helps dealing with the negative
 ones? Do they want to end with the positive items, to "end on a positive
 note"? Should each person go through all their notes, to avoid blocks of
 negativity? Each method has its benefits and each team will find their own
-preferred order. 
+preferred order.
 
 When all participants have presented their notes, the group clusters
 related topics. Try to avoid clusters that are too abstract like
@@ -148,9 +148,10 @@ should also prepare an in-depth look at more than one past retrospective
 for common themes and patterns:
 
 * Are some topics recurring? Then the team might need to look for deeper issues or causes.
-* How long does it take to actually "do" an action item?
+* How long does it take to actually "do" an action item? What could be the
+	reason why some action items get done faster than others?
 * How many topics did not fit into the discussion? Did they re-emerge?
-	does the team regularly drop topics? 
+	Does the team regularly drop topics?
 
 Some software solutions, e.g. [TeamRetro](https://www.teamretro.com/) put
 the reflection phase at the end of the retrospective. I personally prefer
@@ -161,18 +162,20 @@ because the "unfinished business" can give input for the brainstorming phase.
 
 For me, Non-Violent Communication is primarily a specific way of thinking
 and perceiving what motivates people, how conflicts arise, how to solve
-those conflicts and be more honest and connected with myself and other
-people.
+those conflicts and how to be more honest and connected with myself and other
+people. It's **not** about "talking friendly" or in a specific way.
 
 Nonviolent communication means being aware of four key concepts:
 Observation, feelings, needs and requests. In the following sections,
 we'll have a look at these concepts by looking at them in the context an
-agile retrospective. 
+agile retrospective. I'll present each one as a *key distinction*,
+contrasting it to an opposite concept.
 
 The examples assume a friendly, open and honest environment where people
 want to collaborate on the issues presented. At the same time, I'm
 convinced that even if the environment is not that collaborative, the
-concepts of NVC might be helpful to transform it.
+concepts of NVC might be helpful to transform it. Or at least benefit
+yourself and your inner monologue.
 
 ### Observation
 
@@ -213,7 +216,7 @@ would I like to improve?"
 
 I also like the framing with "Anchors" and "Engines" or "Stop/Start/More of/Less of".
 
-One good rule to express to the participants is to avoid naming other people.
+One good rule to express to the participants is to avoid naming other people, inviting to use "I-messages".
 
 #### For participants
 * Avoid generalizations ("always", "never", "often", etc.)
@@ -248,7 +251,21 @@ feelings. Naming them will help you to get a better understanding of
 yourself and a better connection to yourself. Distinguishing between
 feelings and thoughts, will help you to avoid conflicts.
 
-### For facilitators
+Let's look at the examples from the "Observation" section, adding some
+feelings:
+
+* *I had three open pull requests that were not reviewed for three days. I
+	felt a bit lonely.*
+* *I know other programming languages can solve a problem in 3 lines of
+	code instead of 20. It's frustrating.*
+* *I would like have at most 3 hours of meetings per week. I feel totally
+	exhausted and unproductive after a several meetings in a row.*
+* *We have not introduced a new technology in the last quarter. I'm afraid
+	I miss out important developments.*
+* *We have iterated on four of the last features at least two times. I'm
+	puzzled why and curious to understand our processes better.*
+
+#### For facilitators
 
 - Encourage particicpants to share feelings, but don't pressure anyone to
 	share feelings (see section "Requests").
@@ -258,22 +275,75 @@ feelings and thoughts, will help you to avoid conflicts.
 	asking in form of a question it doesn't matter if you can guess the "right" words
 	or not.
 
-### For participants
+#### For participants
 
 In the collection phase, while writing down your sentences, ask yourself,
 how you felt in the situation you're describing. Have look at a list of
 feelings, to get an idea of what you might feel.
 
 Trust your gut feelings when voting, to see which issues you feel strongly
-about.
-
+about. The voting process also shows the distinction between thoughts and
+feelings: You will get a better and more honest outcome if everyone votes
+on topics they feel strongly about and not voting "tactically" where you
+assume others will vote too or even to support someone's agenda.
 
 Improve Collection and Discussion phase by expressing your feelings (with
 examples)
 
+### Needs
+
+Needs are the central element of Nonviolent Communication. The key
+distinction for needs is between needs and strategies. In Nonviolent
+Communication needs are *abstract* and sometimes even thought of as
+universal to every human being. Strategies are the things that fulfill
+needs. For most needs there are multiple strategies to fulfill it
+(although most people have a preferred strategy). For example you can
+fulfill your need for learning and growth through online courses, books,
+talking to expert and colleagues, etc. You can fulfill your need for an
+comfortable temperature through clothing, opening the windows, getting a
+fan, moving around to get warm or changing
+the AC settings. From the temperature example you can see that conflict
+arise over *strategies* (e.g. someone opening the window or turning the
+heating on), while people can agree on a common shared need (for a
+comfortable temperature).
+
+If you want to check if something is more of a need or more of a
+strategy, check if it involves a specific action, item, time, place or
+person. If that's the case, then it's probably not a need in the
+definition of Nonviolent Communication.
+
+Similar to the "I feel ..." prefix, the "I need ..." prefix can also
+introduce a strategy. Especially the prefix "I need you to ..." is rarely
+expressing a need and is often a suggestion for a strategy.
+
+#### For facilitators
+
+Looking at grouped brainstorming notes, check with the participants what
+needs are behind the points expressed in the notes. You might find
+completely different needs behind similar notes. This can help
+"disentangling" notes that were grouped together, but don't belong into
+the same group (or help later when finding a strategy that fulfills *all*
+the needs).
+
+Having only one word that represents a needs as a group name for similar
+brainstorming notes (e.g. "Efficiency", "Structure" or "Harmony") might
+not be descriptive enough. Don't try too hard to force everything into a
+"Nonviolent Communication Structure", but use NVC as a tool to look
+between the lines of the written and spoken words.
+
+Watch out for conflicts over strategies and try to find common ground
+after collecting each participants needs, explaining the difference
+between needs and strategies.
+
+TODO particpants
+
+
 
 ---
 Notes/todo
+
+Needs: No conflict over needs, only strategies/priority of needs
+different.
 
 The benefit of vulnerability
 
@@ -297,5 +367,13 @@ items that suits more needs
 
 
 Ask questions/exercises at the bottom of each NVC topic.
+
+Add  examples of thought- and feeling-sentences at the end of the
+"Feelings" section
+
+Maybe change temperature example in "Needs" section to something less
+subjective.
+
+Add Links to feelings and needs list
 
 [1]: https://en.wikipedia.org/wiki/SMART_criteria
