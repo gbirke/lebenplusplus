@@ -39,10 +39,17 @@ format that I like best. You can even go "meta" and apply the format to
 itself to talk about how you would improve and change the retrospective
 format.
 
-A retrospective has the following phases: Brainstorming, Prioritizing, Discussion and Review.
+The meeting should have a **facilitator** who explains the purpose and
+format of the meeting, keeps an eye on the clock and the talking time of
+the participants and maybe also takes notes. Ideally, the facilitator is
+not an active participant. The facilitator guides the meeting through the
+following phases: Brainstorming, Prioritizing, Discussion and Review.
 
 ### Brainstorming
-The moderator presents the retrospective questions. Typical questions are
+
+The facilitator presents the retrospective questions that should focus the
+attention to certain areas for the time span since the last retrospective.
+Typical questions are
 
 * What went well?
 * What didn't go so well?
@@ -119,8 +126,7 @@ clustered different issues together.
 
 When coming up with action items, make sure that they are "actionable" -
 specific steps with measurable results, a due date and a person that's
-responsible to carry them out. See [SMART
-criteria][1]. Following the
+responsible to carry them out. See [SMART criteria][1]. Following the
 SMART criteria increases the likelihood that someone will take action and
 achieve tangible results.
 
@@ -160,6 +166,7 @@ the reflection phase at the end of the retrospective. I personally prefer
 to have the reflection phase at the beginning of the retrospective,
 because the "unfinished business" can give input for the brainstorming phase.
 
+
 ## The main concepts of Non-Violent Communication
 
 For me, Non-Violent Communication (NVC) is primarily a specific way of thinking
@@ -167,7 +174,7 @@ and perceiving what motivates people, how conflicts arise, how to solve
 those conflicts and how to be more honest and connected with myself and other
 people. It's **not** about "talking friendly" or in a specific way.
 
-Nonviolent communication means being aware of four key concepts:
+Nonviolent Communication means being aware of four key concepts:
 Observation, feelings, needs and requests. In the context of NVC, those
 concepts have a specific meaning. In the following sections,
 we'll have a look at these concepts by looking at them in the context of an
@@ -241,8 +248,8 @@ feeling:
 
 If other people can dispute a statement that looks like a feeling ("But
 I'm including you", "I understood what you said"), then there is a high
-chance that it's a thought. Genuine feelings like "*I feel sad*", "*I feel
-lonely*" are hard to dispute.
+chance that it's a thought. Genuine feelings like "I feel sad", "I feel
+lonely" are hard to dispute.
 
 Expressing your feelings in a workplace environment can feel risky,
 because it makes you vulnerable. And in the tech world, it's still not
@@ -303,19 +310,18 @@ can be an indicator that the action item does not fulfill all your needs
 ### Needs
 
 Needs are the central element of Nonviolent Communication. The key
-distinction for needs is between needs and strategies. In Nonviolent
-Communication needs are *abstract* and sometimes even thought of as
-universal to every human being. Strategies are the things that fulfill
-needs. For most needs there is more than one strategy to fulfill it
-(although most people have a preferred strategy). For example you can
+distinction for needs is between **needs** and **strategies**. In
+Nonviolent Communication needs are *abstract* and sometimes even thought
+of as universal to every human being. Strategies are the things that
+fulfill needs. For most needs there is more than one strategy to fulfill
+it (although most people have a preferred strategy). For example you can
 fulfill your need for learning and growth through online courses, books,
 talking to expert and colleagues, etc. You can fulfill your need for an
 comfortable temperature through clothing, opening the windows, getting a
-fan, moving around to get warm or changing
-the AC settings. From the temperature example you can see that conflict
-arise over *strategies* (e.g. someone opening the window or turning the
-heating on), while people can agree on a common shared need (for a
-comfortable temperature).
+fan, moving around to get warm or changing the AC settings. From the
+temperature example you can see that conflict arise over *strategies*
+(e.g. someone opening the window or turning the heating on), while people
+can agree on a common shared need (for a comfortable temperature).
 
 If you want to check if something is more of a need or more of a strategy,
 check if it involves a specific action, item, time, place or person. If
@@ -378,25 +384,75 @@ helping the other person to express their need.
 When you come up with action items, it's helpful to keep the distinction
 between strategies and needs in mind: The needs are the reason *why* you
 and your colleagues want an action item. The action item should represent
-the *who*, *when*, *where* and *what*, the strategy, that hopefully will
-fulfill the needs.
+the *who*, *when*, *where* and *what*, the strategy that hopefully will
+fulfill the needs. The [SMART criteria][1] for action items go well with
+the questions for strategies: Specific (what), Measurable
+(what/how/where), Assignable (who), Relevant (why) and Time-Bound (when).
+
+### Requests
+
+Nonviolent Communication distinguishes between *requests* and *demands*,
+by looking at the question "Can you say 'no' to the request"? If saying
+"no" has repercussions (getting punished, missing out on rewards), then a
+request becomes a demand. Saying "no" to a request means that you have needs
+that would be left unfulfilled by the request. It's not the end of the
+conversation or negotiation, it's the beginning. Although it can seem
+trite and manipulative, sometimes the question "What do you need to say
+'yes'?" can help to reveal the unfulfilled needs.
+
+Most requests are suggestions for a strategy, but sometimes it's enough to
+be heard and seen, sometimes the request is a "connection request", asking
+the other person for feedback on what you said, or trying to paraphrase
+what they said.
+
+#### For facilitators
+
+Don't assign action items, ask the participants if there is a volunteer.
+If no one is volunteering, you can ask what's keeping the participants from
+volunteering (after making clear that the action items are voluntary).
+
+Pay attention to action items that don't get done over the course of
+more than two or three retrospectives. It's a sign that there are more
+pressing needs keeping the volunteer from doing it. Discuss during the
+review phase if the action item is still relevant and important to all
+participants.
 
 
+#### For participants
+
+When discussing your notes, ask yourself if you need an action item to
+meet the unmet needs behind the note, or if it's enough for you to be
+understood and appreciated by your colleagues.
+
+When discussing action items, ask yourself what's keeping you from saying
+an enthusiastic "yes" to an item that is up for volunteering.
+
+## Conclusion
+
+TODO How NVC supercharges retrospectives
 
 ---
 Notes/todo
 
-The benefit of vulnerability
+What is NVC *for*, what are the benefits?
 
-A retro, like NVC, is also about connection. Sometimes an action/request
-is not necessary and the mere fact of being heard, seen and accepted is
-enough to let an issue rest for a while.
+Feelings section: The benefit of vulnerability
 
+Don't let "NVC" get in the way of being honest and open with each other.
+When in doubt, or if you're struggling to find "a non-violent way" to say
+things, rather say what's on your mind and ask the facilitator or other
+participants what feelings and needs they can identify in what you said.
 
-Action items are requests - if they don't get done, there are other needs
-that get in the way and can be discussed to find a better strategy/action
-items that suits more needs
+Feelings are an indicator for fulfilled or unfulfilled needs.
 
+Conflicts are on the strategy level - what to do about "conflicting"
+needs? When you can't find a strategy that fulfills everyone's needs,
+sometimes the solution is "temporal" - negotiating which order you will do
+the strategies, fulfilling all needs. This needs some trust in the group,
+that your needs matter and will be fulfilled in the end.
+
+What's "Violence"? In the context of NVC it's ignoring needs (our own or
+others).
 
 Ask questions/exercises at the bottom of each NVC topic.
 
