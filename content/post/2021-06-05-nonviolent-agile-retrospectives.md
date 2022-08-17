@@ -1,6 +1,6 @@
 ---
 title: "Nonviolent Agile Retrospectives"
-date: 2021-06-05
+date: 2022-08-15
 tags:
   - agile
   - communication
@@ -8,10 +8,9 @@ tags:
   - nonviolent communication
 categories:
   - wikimedia
-description: ""
 ---
 
-In this article you'll learn what an agile retrospective is, the basic
+In this article you'll learn what about agile retrospectives, the basic
 principles of Non-Violent Communication (NVC) and how applying those
 principles to a retrospective can improve the retrospective.
 
@@ -20,7 +19,7 @@ skip the sections explaining it.
 
 ## What is an agile retrospective?
 
-An agile retrospective is a special meeting format, commonly used in
+An agile retrospective is a meeting format, commonly used in
 software development, but also suitable for teams outside of software
 development. Its main purpose is the continuous improvement
 ([Kaizen](https://en.wikipedia.org/wiki/Kaizen)) of processes,
@@ -43,7 +42,7 @@ The meeting should have a **facilitator** who explains the purpose and
 format of the meeting, keeps an eye on the clock and the talking time of
 the participants and maybe also takes notes. Ideally, the facilitator is
 not an active participant. The facilitator guides the meeting through the
-following phases: Brainstorming, Prioritizing, Discussion and Review.
+following **phases**: Brainstorming, Prioritizing, Discussion and Review.
 
 ### Brainstorming
 
@@ -75,10 +74,10 @@ participant working on their own has the benefit of not forming a
 consensus too early, reducing the influence of the more vocal people in
 the group and getting input from more withdrawn personalities.
 
-The participants then gather and present their findings, describing the
-word on each of their notes in one or two sentences and assigning each
-note to a retrospective question. In bigger groups
-there might be time constraints like "max. 2-3 items per person"".
+The participants then gather and present their findings, explaining their
+notes in one or two sentences and assigning each note to a retrospective
+question. In bigger groups there might be time constraints like "max. 2-3
+items per person" or "2 minutes of speaking time per person".
 
 There are several ways for the participants to present the answers to the
 questions: Do they want to start with the more positive items, to get into
@@ -152,7 +151,7 @@ and/or able to do it. The participants can amend and drop past action
 items as needed.
 
 In regular intervals (e.g. every 4 retrospectives), one participant
-should also prepare an in-depth look at more than one past retrospective
+should also prepare an in-depth look at past retrospectives
 for common themes and patterns:
 
 * Are some topics recurring? Then the team might need to look for deeper issues or causes.
@@ -172,20 +171,26 @@ because the "unfinished business" can give input for the brainstorming phase.
 For me, Non-Violent Communication (NVC) is primarily a specific way of thinking
 and perceiving what motivates people, how conflicts arise, how to solve
 those conflicts and how to be more honest and connected with myself and other
-people. It's **not** about "talking friendly" or in a specific way.
+people. It's *not* about "talking friendly" or in a specific way.
 
-Nonviolent Communication means being aware of four key concepts:
-Observation, feelings, needs and requests. In the context of NVC, those
-concepts have a specific meaning. In the following sections,
-we'll have a look at these concepts by looking at them in the context of an
-agile retrospective. I'll present each one as a *key distinction*,
-contrasting it to an opposite concept.
+Nonviolent Communication means being aware of four **key concepts**:
 
-The examples assume a friendly, open and honest environment where people
-want to collaborate on the issues presented. At the same time, I'm
-convinced that even if the environment is not that collaborative, the
-concepts of NVC might be helpful to transform it. Or at least benefit
-yourself and your inner monologue.
+- Observations
+- Feelings
+- Needs
+- Requests. 
+
+In the context of NVC, those concepts have a specific meaning. In the
+following sections, we'll have a look at these concepts by looking at them
+in the context of an agile retrospective. I'll present each one as a **key
+distinction**, contrasting it to an opposite concept.
+
+The examples assume [psychological
+safety](https://en.wikipedia.org/wiki/Psychological_safety) - a friendly,
+open and honest environment where people want to collaborate on the issues
+presented. At the same time, I'm convinced that even if the environment is
+not that collaborative, the concepts of NVC might be helpful to transform
+it. Or at least benefit yourself and your inner monologue.
 
 ### Observation
 
@@ -219,12 +224,11 @@ quantities. You can also see that most of them are
 
 The phrasing of the retrospective questions matters, because some
 questions invite judgement and some questions inspire creativity and
-observation.
+observation:
 
-I like to replace the question "What didn't go so well?" with "What
-would I like to improve?"
-
-I also like the framing with "Anchors" and "Engines" or "Stop/Start/More of/Less of".
+* Try to replace the question "What didn't go so well?" with "What
+  would I like to improve?"
+* I also like the framing with "Anchors" and "Engines" or "Stop/Start/More of/Less of".
 
 One good rule to express to the participants is to avoid naming other people, inviting to use "I-messages".
 
@@ -233,6 +237,8 @@ One good rule to express to the participants is to avoid naming other people, in
 * Avoid unspecific comparisons ("too fast/slow", "too many/few", etc.).
 	Use specific measurements instead.
 * Use I-messages, avoid naming other people
+* Avoid analyzing *why* someone (or yourself) did something and focus on *what*
+	happened.
 
 ### Feelings
 
@@ -257,9 +263,15 @@ common to talk about feelings and some people might even judge it as
 "unprofessional". But that doesn't mean you don't *have* feelings, only
 that you might be not comfortable expressing them at the workplace.
 Nonviolent Communication is still useful, because you can *examine* your
-feelings. Naming them will help you to get a better understanding of
-yourself and a better connection to yourself. Distinguishing between
-feelings and thoughts, will help you to avoid conflicts.
+feelings:
+
+* Naming them will help you to get a better understanding of
+	yourself and a better connection to yourself. 
+* Distinguishing between
+  feelings and thoughts, will help you to avoid conflicts.
+* Feelings are connected to needs (see next section): Pleasant feelings 
+  hint at fulfilled needs, unpleasant feelings can point to unfulfilled
+  needs.
 
 Let's look at the examples from the "Observation" section, adding some
 feelings:
@@ -314,7 +326,7 @@ distinction for needs is between **needs** and **strategies**. In
 Nonviolent Communication needs are *abstract* and sometimes even thought
 of as universal to every human being. Strategies are the things that
 fulfill needs. For most needs there is more than one strategy to fulfill
-it (although most people have a preferred strategy). For example you can
+it, although most people have a preferred strategy. For example you can
 fulfill your need for learning and growth through online courses, books,
 talking to expert and colleagues, etc. You can fulfill your need for an
 comfortable temperature through clothing, opening the windows, getting a
@@ -333,7 +345,7 @@ NVC. What you shouldn't do is use those list as a prescriptive tool to
 judge other people's language, judging "this is nonviolent and this is
 not". Using the lists in this way will turn Nonviolent Communication
 principles from a helpful tool for getting connected to other people into
-a weapon that'll create conflict.
+a source of conflict.
 
 Similar to the "I feel ..." prefix, the "I need ..." prefix can also
 introduce a strategy. Especially the prefix "I need you to ..." is rarely
@@ -364,6 +376,11 @@ Watch out for conflicts over strategies and try to find common ground
 after collecting each participants needs, explaining the difference
 between needs and strategies.
 
+When you can't find a strategy that fulfills everyone's needs, sometimes
+the solution is "temporal" - find several strategies, then negotiating in
+which order you will do them. This requires some trust in the group, that
+everyone's needs matter and will be fulfilled in the end.
+
 
 #### For participants
 
@@ -385,13 +402,13 @@ When you come up with action items, it's helpful to keep the distinction
 between strategies and needs in mind: The needs are the reason *why* you
 and your colleagues want an action item. The action item should represent
 the *who*, *when*, *where* and *what*, the strategy that hopefully will
-fulfill the needs. The [SMART criteria][1] for action items go well with
+fulfill the need. The [SMART criteria][1] for action items go well with
 the questions for strategies: Specific (what), Measurable
 (what/how/where), Assignable (who), Relevant (why) and Time-Bound (when).
 
 ### Requests
 
-Nonviolent Communication distinguishes between *requests* and *demands*,
+Nonviolent Communication distinguishes between **requests** and **demands**,
 by looking at the question "Can you say 'no' to the request"? If saying
 "no" has repercussions (getting punished, missing out on rewards), then a
 request becomes a demand. Saying "no" to a request means that you have needs
@@ -401,7 +418,7 @@ trite and manipulative, sometimes the question "What do you need to say
 'yes'?" can help to reveal the unfulfilled needs.
 
 Most requests are suggestions for a strategy, but sometimes it's enough to
-be heard and seen, sometimes the request is a "connection request", asking
+be heard and seen. A request can be a "connection request", asking
 the other person for feedback on what you said, or trying to paraphrase
 what they said.
 
@@ -420,8 +437,8 @@ participants.
 
 #### For participants
 
-When discussing your notes, ask yourself if you need an action item to
-meet the unmet needs behind the note, or if it's enough for you to be
+When preparing or discussing your notes, ask yourself if you need an action item to
+fulfill the needs behind the note, or if it's enough for you to be
 understood and appreciated by your colleagues.
 
 When discussing action items, ask yourself what's keeping you from saying
@@ -429,9 +446,11 @@ an enthusiastic "yes" to an item that is up for volunteering.
 
 ## Conclusion
 
-TODO How NVC supercharges retrospectives
+"Continuous Improvement" can mean "Fulfilling the needs of all
+participants better". In agile retrospectives Non-Violent communication
+can be a tool to resolve conflict, develop more empathy and team cohesion.
 
----
+<!--
 Notes/todo
 
 What is NVC *for*, what are the benefits?
@@ -445,12 +464,6 @@ participants what feelings and needs they can identify in what you said.
 
 Feelings are an indicator for fulfilled or unfulfilled needs.
 
-Conflicts are on the strategy level - what to do about "conflicting"
-needs? When you can't find a strategy that fulfills everyone's needs,
-sometimes the solution is "temporal" - negotiating which order you will do
-the strategies, fulfilling all needs. This needs some trust in the group,
-that your needs matter and will be fulfilled in the end.
-
 What's "Violence"? In the context of NVC it's ignoring needs (our own or
 others).
 
@@ -463,5 +476,6 @@ Maybe change temperature example in "Needs" section to something less
 subjective.
 
 Add Links to feelings and needs list
+-->
 
 [1]: https://en.wikipedia.org/wiki/SMART_criteria
