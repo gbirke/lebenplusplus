@@ -10,8 +10,8 @@ categories:
   - wikimedia
 ---
 
-In this article you'll learn what about agile retrospectives, the basic
-principles of Non-Violent Communication (NVC) and how applying those
+In this article you'll learn about agile retrospectives, the basic
+principles of Non-Violent Communication (NVC), and how applying those
 principles to a retrospective can improve the retrospective.
 
 If you're already familiar with agile retrospectives, you can
@@ -34,21 +34,21 @@ improving the next interval.
 ## What does an agile retrospective look like?
 
 Side note: There are many variations of the format, I'll describe the
-format that I like best. You can even go "meta" and apply the format to
-itself to talk about how you would improve and change the retrospective
-format.
+format that I like best. 
 
-The meeting should have a **facilitator** who explains the purpose and
-format of the meeting, keeps an eye on the clock and the talking time of
-the participants and maybe also takes notes. Ideally, the facilitator is
-not an active participant. The facilitator guides the meeting through the
-following **phases**: Brainstorming, Prioritizing, Discussion and Review.
+The agile retrospective meeting should have a **facilitator** who explains
+the purpose and format of the meeting, keeps an eye on the clock and the
+talking time of the participants and maybe also takes notes. Ideally, the
+facilitator is not an active participant. The facilitator guides the
+meeting through the following **phases**: Brainstorming, Prioritizing,
+Discussion and Review.
 
 ### Brainstorming
 
-The facilitator presents the retrospective questions that should focus the
-attention to certain areas for the time span since the last retrospective.
-Typical questions are
+The facilitator presents the retrospective questions. The questions should
+focus the attention of the participants. The facilitator explains that the
+focus should be on the time span since the last retrospective. Typical
+questions are
 
 * What went well?
 * What didn't go so well?
@@ -68,8 +68,8 @@ Or
 * What were the *engines*? (Things propelling us forward)
 
 All participants write down things or events from the retrospective
-interval that answer the questions, using sticky notes, a sheet of paper
-or retrospective software. The notes should be only a few words. Each
+interval that answer the questions, using sticky notes, a sheet of paper,
+or retrospective software. Each note should be only a few words long. Each
 participant working on their own has the benefit of not forming a
 consensus too early, reducing the influence of the more vocal people in
 the group and getting input from more withdrawn personalities.
@@ -85,7 +85,8 @@ a joyful celebration of successes that helps dealing with the negative
 ones? Do they want to end with the positive items, to "end on a positive
 note"? Should each person go through all their notes, to avoid blocks of
 negativity? Each method has its benefits and each team will find their own
-preferred order.
+preferred order. For teams new to agile retrospectives, the facilitator
+should suggest an order. 
 
 When all participants have presented their notes, the group clusters
 related topics. Try to avoid clusters that are too abstract like
@@ -94,24 +95,21 @@ statement.
 
 ### Prioritizing
 
-Each participant gets a number of votes they can place on an cluster or
-a single note. Depending on the questions, some questions might
-not eligible to be voted on, because they don't produce "actionable"
-insight. At the end of the voting process, you'll see which topics are the
-most important ones for the participants.
+Do a [Dot Voting](https://www.nngroup.com/articles/dot-voting/) where each
+participant gets a number of "dots" (votes) they can place on an cluster
+or a single note. Depending on the questions, some questions might not
+eligible to be voted on, because they don't produce "actionable" insight.
+Each participant should get a number of votes that's about a quarter of
+the available options. At the end of the voting process, you'll see which
+topics are the most important ones for the participants.
 
-The number of votes influences how focused the outcome will be: Having
-fewer votes will probably nudge the participants to vote on topics they
-care about. But it also means that they might have the impression
-of having not enough influence on the priorities.
-
-The voting should be quick and as anonymous as possible, to avoid
-faction-building or "agendas".
+The voting should be quick and silent, to avoid faction-building or
+"agendas". When using an online tool, use anonymous voting.
 
 ### Discussion
 
 Discuss each topic, in the order of importance. The goal of the discussion
-of each topic should be to find an "action item" - specific things to do
+of each topic should be to find an "action item" – specific things to do
 to improve the situation. Sometimes the underlying cause of an issue
 is not clear, so the discussion might also be around *what* the
 problem is and *why* it occurs. For more complex topics it might be
@@ -124,10 +122,11 @@ You might also dissolve clusters if it turns out that you have
 clustered different issues together.
 
 When coming up with action items, make sure that they are "actionable" -
-specific steps with measurable results, a due date and a person that's
-responsible to carry them out. See [SMART criteria][1]. Following the
-SMART criteria increases the likelihood that someone will take action and
-achieve tangible results.
+specific steps with measurable results (did X improve, did Y occur less
+frequently, do we think Z is still a problem, etc), a due date and a
+person that's responsible to carry them out. See [SMART criteria][1].
+Following the SMART criteria increases the likelihood that someone will
+take action and achieve tangible results.
 
 Most retrospectives should take one hour, with the discussion part taking
 20-30 minutes. The moderator should remind the participants of the time
@@ -154,7 +153,7 @@ In regular intervals (e.g. every 4 retrospectives), one participant
 should also prepare an in-depth look at past retrospectives
 for common themes and patterns:
 
-* Are some topics recurring? Then the team might need to look for deeper issues or causes.
+* Are some topics recurring? Then the team might need to look for deeper issues or causes. Or it might do the opposite - if a topic is recurring, then it might also be too broad (e.g. "Knowledge Silos" or "Team Communication") and the team could benefit from narrowing down to a more specific topic. 
 * How long does it take to actually "do" an action item? What could be the
 	reason why some action items get done faster than others?
 * How many topics did not fit into the discussion? Did they re-emerge?
@@ -167,6 +166,11 @@ because the "unfinished business" can give input for the brainstorming phase.
 
 
 ## The main concepts of Non-Violent Communication
+
+In this section, I'll introduce the main concepts of Non-Violent
+Communication (NVC) in a general explanation and then give practical
+advice to the facilitators and participants of agile retrospectives on how
+to *apply* the concept to the different phases of the meeting.
 
 For me, Non-Violent Communication (NVC) is primarily a specific way of thinking
 and perceiving what motivates people, how conflicts arise, how to solve
@@ -216,7 +220,8 @@ Compare the judgemental sentences with more observational ones:
 	wonder if we can be more effective*
 
 You can see that the sentences are more precise, mentioning observable
-quantities. You can also see that most of them are
+quantities. You can also see that most of them focus on the person, as in
+"I would ...", "I had ...", making them
 "[I-messages](https://en.wikipedia.org/wiki/I-message)".
 
 
@@ -230,7 +235,8 @@ observation:
   would I like to improve?"
 * I also like the framing with "Anchors" and "Engines" or "Stop/Start/More of/Less of".
 
-One good rule to express to the participants is to avoid naming other people, inviting to use "I-messages".
+One good rule to express to the participants is to avoid referring to (or
+even blaming) other people, inviting to use "I-messages".
 
 #### For participants
 * Avoid generalizations ("always", "never", "often", "only", etc.)
@@ -262,7 +268,8 @@ because it makes you vulnerable. And in the tech world, it's still not
 common to talk about feelings and some people might even judge it as
 "unprofessional". But that doesn't mean you don't *have* feelings, only
 that you might be not comfortable expressing them at the workplace.
-Nonviolent Communication is still useful, because you can *examine* your
+Even if you don't feel safe enough to express your feelings in the
+workplace, Nonviolent Communication is still useful, because you can *examine* your
 feelings:
 
 * Naming them will help you to get a better understanding of
@@ -290,7 +297,7 @@ feelings:
 #### For facilitators
 
 - Encourage participants to share feelings, but don't pressure anyone to
-	share feelings (see section "Requests").
+	share feelings (see section "[Requests](#requests)").
 - Lead by example by expressing your own feelings.
 - When people express "thought-feelings", try to paraphrase them with
 	different words, as a question. If you're not prescribing feelings but
@@ -369,8 +376,8 @@ later when finding a strategy that fulfills *all* the needs).
 Having only one word that represents a need as a group name for similar
 brainstorming notes (e.g. "Efficiency", "Structure" or "Harmony") might
 not be descriptive enough. Don't try too hard to force everything into a
-"Nonviolent Communication Structure", but use NVC as a tool to look
-between the lines of the written and spoken words.
+"Nonviolent Communication Structure", but use NVC as a tool to find needs
+that might be implicated, but not spoken out loud.
 
 Watch out for conflicts over strategies and try to find common ground
 after collecting each participants needs, explaining the difference
@@ -454,6 +461,8 @@ can be a tool to resolve conflict, develop more empathy and team cohesion.
 Notes/todo
 
 What is NVC *for*, what are the benefits?
+
+Add Imag of Retro Board.
 
 Feelings section: The benefit of vulnerability
 
