@@ -1,6 +1,6 @@
 ---
 title: "Nonviolent Agile Retrospectives"
-date: 2022-08-15
+date: 2022-08-25
 tags:
   - agile
   - communication
@@ -136,6 +136,8 @@ holding a separate workshop or meeting to investigate the issue.
 Due to the time constraints, the team might not discuss some of the items
 with a lower priority. This is OK - if the underlying issues persist, the
 topics will come up in future retrospectives and get a higher priority.
+The facilitator may also stop discussions that need more in-depth
+communication and strategizing and move them to a separate meeting.
 
 
 ### Reflection
@@ -153,7 +155,11 @@ In regular intervals (e.g. every 4 retrospectives), one participant
 should also prepare an in-depth look at past retrospectives
 for common themes and patterns:
 
-* Are some topics recurring? Then the team might need to look for deeper issues or causes. Or it might do the opposite - if a topic is recurring, then it might also be too broad (e.g. "Knowledge Silos" or "Team Communication") and the team could benefit from narrowing down to a more specific topic. 
+* Are some topics recurring? Then the team might need to look for deeper
+  issues or causes.
+  Or it might do the opposite - if a topic is recurring, then it might
+  also be too broad (e.g. "Knowledge Silos" or "Team Communication") and
+  the team could benefit from narrowing down to a more specific topic. 
 * How long does it take to actually "do" an action item? What could be the
 	reason why some action items get done faster than others?
 * How many topics did not fit into the discussion? Did they re-emerge?
@@ -161,8 +167,9 @@ for common themes and patterns:
 
 Some software solutions, e.g. [TeamRetro](https://www.teamretro.com/) put
 the reflection phase at the end of the retrospective. I personally prefer
-to have the reflection phase at the beginning of the retrospective,
-because the "unfinished business" can give input for the brainstorming phase.
+to have the reflection phase at the beginning of the retrospective, before
+or as part of the brainstorming, because the "unfinished business" can
+give input for the brainstorming phase.
 
 
 ## The main concepts of Non-Violent Communication
@@ -233,7 +240,9 @@ observation:
 
 * Try to replace the question "What didn't go so well?" with "What
   would I like to improve?"
-* I also like the framing with "Anchors" and "Engines" or "Stop/Start/More of/Less of".
+* I also like the framing with "Anchors" and "Engines", because it often
+	results in the participants coming up with feelings and needs (see
+	next sections).
 
 One good rule to express to the participants is to avoid referring to (or
 even blaming) other people, inviting to use "I-messages".
@@ -268,6 +277,7 @@ because it makes you vulnerable. And in the tech world, it's still not
 common to talk about feelings and some people might even judge it as
 "unprofessional". But that doesn't mean you don't *have* feelings, only
 that you might be not comfortable expressing them at the workplace.
+
 Even if you don't feel safe enough to express your feelings in the
 workplace, Nonviolent Communication is still useful, because you can *examine* your
 feelings:
@@ -391,10 +401,10 @@ everyone's needs matter and will be fulfilled in the end.
 
 #### For participants
 
-Keep a word-list of needs and go through the list for
-each topic on the board, writing down what fulfilled or unfulfilled needs
-might be behind that topic. This is a private exercise that can help you
-to get in the "NVC mindset".
+If you feel in the mood to exercise your "NVC mindset", bring a word-list
+of needs to the retro and go through the list for each topic on the board,
+writing down what fulfilled or unfulfilled needs might be behind that
+topic. 
 
 When grouping similar notes, check with other participants what the
 (un)fulfilled needs are.
@@ -453,9 +463,19 @@ an enthusiastic "yes" to an item that is up for volunteering.
 
 ## Conclusion
 
-"Continuous Improvement" can mean "Fulfilling the needs of all
-participants better". In agile retrospectives Non-Violent communication
-can be a tool to resolve conflict, develop more empathy and team cohesion.
+The Non-Violent Communication mindset focuses on observation without
+judgement, recognizing feelings and a distinction between abstract needs
+and strategies to fulfill those needs. I think this mindset complements
+agile retrospectives, where the main goals are to find better strategies
+for working together, to (re-)connect with your colleagues and resolve
+conflicts in a constructive manner. On a personal level it can help you to
+be more mindful and engaged in retrospective meetings (paying attention to
+needs and feelings), and to develop more empathy for yourself and your
+needs inside the team and the organization.
+
+To me, "Continuous Improvement" sometimes reeks of hyper-capitalist,
+competitive self-optimization and -exploitation. With an NVC mindset, it
+can mean "Fulfilling the needs of all participants better".
 
 <!--
 Notes/todo
