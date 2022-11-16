@@ -12,7 +12,7 @@ jobs:
     steps:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
@@ -27,7 +27,7 @@ jobs:
         run: hugo --minify --theme blackburn --baseURL https://lebenplusplus.de/
         
       - name: rsync deployments
-        uses: burnett01/rsync-deployments@4.1
+        uses: burnett01/rsync-deployments@5.2
         with:
           switches: -v --recursive --times --delete --prune-empty-dirs --filter='P .htaccess' --checksum
           path: public/
