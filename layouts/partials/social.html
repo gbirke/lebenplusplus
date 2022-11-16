@@ -25,7 +25,14 @@
     <li class="pure-menu-item">
       <a class="pure-menu-link" href="https://plus.google.com/+{{ . }}" target="_blank"><i class="fa fa-google-plus-square fa-fw"></i>Google+</a>
     </li>
+	{{ end }}
+
+	{{ with .Site.Social.mastodon }}
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="{{ . }}" target="_blank" rel="me"><i class="fa fa-comment fa-fw"></i>Mastodon</a>
+    </li>
     {{ end }}
+
 
     {{ with .Site.Social.weibo }}
     <li class="pure-menu-item">
