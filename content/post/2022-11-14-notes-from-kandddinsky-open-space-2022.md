@@ -14,7 +14,7 @@ These are the notes I took during the sessions. Some of them don't have a clear 
 
 <!--more-->
 
-## Architecture Hamburger 
+## The Architecture Hamburger 
 
 An introduction into the history of architectures. There are at least two ways of representing architectures - layers and rings.
 
@@ -24,6 +24,7 @@ Ring representations like the [Hexagonal Architecture](https://en.wikipedia.org/
 
 At first sight, the Architecture Hamburger looks like a layer representation, but since there is no "top-down" or "bottom-up" hierarchy, it's a synthesis of both layer and ring representation.  Its direction-less representation  also allows technology mapping - the different parts of the hamburger correspond to different technologies.
 
+[Link to the SpeakerDeck presentation of The Architecture Hamburger](https://speakerdeck.com/hschwentner/software-architecture)
 
 ## IDE plugins for DDD
 This was a presentation of two plugins (one for VS Code, one for IDEs from JetBrains) that allow for metadata definition of your domain language. The IDE will then recognize the "words" of your language as part of classes, methods, variable names, comments, etc. and help you with refactoring, auto-completion and context-specific help ("intellisense for the domain"). These plugins are also helpful when you split concepts of your domain - a mass rename refactoring is not possible. Instead, the plugins will use a spellcheck/code-inspection-like visual hint (e.g. squiggly underline) that allows a code action to choose the correct new concept and do a local refactoring.
