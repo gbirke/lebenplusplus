@@ -1,0 +1,26 @@
+{{ $autolinking := .Page.Param "imageAutoLink" | default true }}
+{{- $img := .Page.Resources.GetMatch .Destination -}}
+{{- if and (not $img) .Page.File -}}
+{{ $path := path.Join .Page.File.Dir .Destination }}
+{{- $img = resources.Get $path -}}
+{{- end -}}
+{{- with $img -}}
+{{- $large := $img.Resize "700x" -}}
+{{- $medium := $img.Resize "500x" -}}
+{{- $small := $img.Resize "360x" -}}
+<figure class="image-caption">
+{{ if gt $img.Width 700 }}
+	{{ if and (gt $img.Width 1000) (eq $autolinking true ) }}<a href="{{- $img.RelPermalink -}}">{{ end }}
+    <img alt="{{ $.Text }}" srcset="
+        {{ $small.RelPermalink }} 360w,
+        {{ $medium.RelPermalink }} 500w,
+        {{ $large.RelPermalink }} 700w" sizes="(max-width: 424px) 360px,(max-width: 596px) 500px,(min-width: 565px) 700px" src="{{ $small.RelPermalink }}" title="{{ $.Title }}" loading="lazy" />
+    {{ if and (gt $img.Width 1000) (eq $autolinking true ) }}</a>{{ end }}
+{{ else }}
+    <img alt="{{ $.Text }}" src="{{ $img.RelPermalink }}" loading="lazy" title="{{ $.Title }}" />
+{{ end }}
+    <figcaption>{{ with $.Title | safeHTML }}{{ . }}{{ end }}</figcaption>
+</figure>
+{{- else -}}
+<img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}" title="{{ $.Title }}" loading="lazy" />{{- end -}}
+<!-- adapted from https://github.com/bep/portable-hugo-links/blob/master/layouts/_default/_markup/render-image.html -->

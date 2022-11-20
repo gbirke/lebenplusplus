@@ -24,6 +24,8 @@ Ring representations like the [Hexagonal Architecture](https://en.wikipedia.org/
 
 At first sight, the Architecture Hamburger looks like a layer representation, but since there is no "top-down" or "bottom-up" hierarchy, it's a synthesis of both layer and ring representation.  Its direction-less representation  also allows technology mapping - the different parts of the hamburger correspond to different technologies.
 
+![A hamburger-like diagram, with "UI" as the top bun, "Application" as the pattie, a flattened hexagon called "Domain" and "Infrastructure" as the bottom bun](architecture_hamburger.png "Main Diagram of the Architecture Hamburger")
+
 [Link to the SpeakerDeck presentation of The Architecture Hamburger](https://speakerdeck.com/hschwentner/software-architecture)
 
 ## IDE plugins for DDD
