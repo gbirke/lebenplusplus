@@ -22,7 +22,7 @@ I know that there are alternative setups like the [compose key](https://help.ubu
 
 On Linux, the software for managing keyboard layouts both for the X server and for Sway is [XKB](https://wiki.archlinux.org/title/X_keyboard_extension). It defines keyboard *layouts* that more or less represent the physical keys on he layout and *variants* that can redefine characters, composition and <kbd>AltGr</kbd> behavior.
 
-In my previous installation with xmonad, I had a US keyboard layout with a variant called `cz_sk_de` that allowed to type the umlauts with an <kbd>AltGr</kbd> combination. I don't remember if I installed it manually or if it came with my OS. On my new OS, Ubuntu 22.04, the `cz_sk_de` variant was not present, so I had to manually look which variants are available:
+In my previous installation with xmonad, I had a US keyboard layout with a variant called `cz_sk_de` that allowed to type the umlauts with an <kbd>AltGr</kbd> combination. I don't remember if I installed it manually or if it came with my OS. On my new OS, Ubuntu 22.04, the `cz_sk_de` variant was not present, so I used the following commands to look which other variants are available:
 
 	localectl list-x11-keymap-variants us
 	localectl list-x11-keymap-variants de
