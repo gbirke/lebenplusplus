@@ -52,7 +52,6 @@ custom_js = ["https://cdnjs.cloudflare.com/ajax/libs/zooming/1.4.2/zooming.min.j
     url = "/tags/"
 
 [social]
-twitter = "chiborg"
 github = "gbirke"
 stackoverflow = "chiborg"
 mastodon = "https://chaos.social/web/accounts/203965"
