@@ -40,6 +40,19 @@
 }
 /* END font definition */
 
+body {
+	color: #666666;
+}
+
+.header {
+	border-bottom: none;
+}
+
+.header h2 {
+	color: #666666;
+	border-bottom: none;
+}
+
 .content p code,
 .content li code {
     color: black;
@@ -58,7 +71,7 @@
 }
 
 .content blockquote {
-    border-left: solid 4px #777;
+    border-left: solid 4px #666666;
     margin-left: 0;
     padding-left: 1rem;
     font-style: italic;
