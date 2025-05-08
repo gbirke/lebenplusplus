@@ -181,13 +181,13 @@ syntax, more than one line etc) the `sed` approach could have left broken
 configuration files. The [`yq`][6] command allows in-place editing using a path
 syntax I already new from its JSON counterpart, [`jq`][7].
 
-For code changes in a uniform code base I would try out the `diff` and `patch`
-tools. For more involved code changes, I'd use language-specific tools that work
-on the Abstract Syntax Tree (AST) of the code files.
-For JavaScript I could use [jscodeshift][10], for PHP I'd use [rector][9]
-or [phpactor][11]. The `phpactor` CLI tool allows for common
-[refactorings][12] like renaming classes and variables and moving classes to another
-namespace.
+For small code changes in a uniform code base I would try out the `diff`
+and `patch` tools. For more involved code changes, I'd use [ast-grep][14],
+a search-and-replace tool that works on the Abstract Syntax Tree (AST) of
+the code. For JavaScript I could also use [jscodeshift][10], for PHP I'd
+use [rector][9] or [phpactor][11]. The `phpactor` CLI tool allows for
+common, project-wide [refactorings][12] like renaming classes and
+variables and moving classes to another namespace.
 
 Beware of diminishing returns - the longer you have to fiddle to make a change
 work, the fewer repositories affected, the higher the chance that doing the
@@ -250,4 +250,4 @@ on how to use `mani` in the future:
 [11]: https://github.com/phpactor/phpactor
 [12]: https://phpactor.readthedocs.io/en/master/reference/refactorings.html
 [13]: https://stackoverflow.com/questions/42715785/how-do-i-show-statistics-for-authors-contributions-in-git
-
+[14]: https://ast-grep.github.io
