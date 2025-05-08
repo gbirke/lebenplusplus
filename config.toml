@@ -30,6 +30,12 @@ highlightjs_extra_languages = ["yaml"]
 custom_css = ["css/custom.css"]
 custom_js = ["https://cdnjs.cloudflare.com/ajax/libs/zooming/1.4.2/zooming.min.js"]
 
+[params.social]
+github = "gbirke"
+stackoverflow = "chiborg"
+mastodon = "https://chaos.social/web/accounts/203965"
+
+
 [menu]
   # Shown in the side menu.
   [[menu.main]]
@@ -51,7 +57,4 @@ custom_js = ["https://cdnjs.cloudflare.com/ajax/libs/zooming/1.4.2/zooming.min.j
     identifier = "tags"
     url = "/tags/"
 
-[social]
-github = "gbirke"
-stackoverflow = "chiborg"
-mastodon = "https://chaos.social/web/accounts/203965"
+
