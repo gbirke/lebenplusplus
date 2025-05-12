@@ -1,4 +1,10 @@
+# Destination files
 public/
+
+# Hugo files
 build/
 .hugo_build.lock
 resources/_gen
+
+# Default Nix result directory
+result
