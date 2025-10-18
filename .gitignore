@@ -8,3 +8,6 @@ resources/_gen
 
 # Default Nix result directory
 result
+
+# direnv link directory
+.direnv
